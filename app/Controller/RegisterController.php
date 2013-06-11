@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('Security', 'Utility');
 
 class RegisterController extends AppController {
 	
@@ -21,12 +22,49 @@ class RegisterController extends AppController {
     
     //QRコード読み込み
     function qrread() {
-        
+        $this->Session->delete('Register');
     }
     
     //選手名登録
-    function registername(){
+    function registername() {
+                
+        if ($this->request->is('post')) {
+            $this->Session->write('Register.player_id',$this->request->data['User']['player_id']);    //セッションに保存
+            $this->Session->write('Register.name',"");    //セッションに保存             
+        }
         
+        //セッションが無かったらリダイレクト
+        if ($this->Session->check('Register') == false){
+            $this->redirect(array('action' => 'qrread'));
+        }
+        $this->set('register',$this->Session->read('Register'));
+    }
+    
+    //確認
+    function confirm() {
+        
+        //セッションが無かったらリダイレクト
+        if ($this->Session->check('Register') == false){
+            $this->redirect(array('action' => 'qrread'));
+        }
+       
+       $this->Session->write('Register.name',"");   //POSTがなければ名前はなし
+       if ($this->request->is('post')) {
+            $this->Session->write('Register.name',$this->request->data['User']['username']);    //セッションに保存             
+       }
+    
+        //名前の空白判定は後でもう少ししっかりとやる。(全角スペースのみを空白判定、後ろの空白除去など)
+        $disp_name = $this->Session->read('Register.name');    //名前を読み込み
+        if (empty($disp_name)){
+            $disp_name = "記入なし";
+        }
+        
+        $this->set('disp_name',$disp_name);
+        $this->set('register',$this->Session->read('Register'));      
+    }
+    
+    //選手宣誓
+    function oath() {
     }
     
     //選手QRCodeチェック
@@ -41,9 +79,9 @@ class RegisterController extends AppController {
             }
            
             //ハッシュ化
-            $this->request->data['code'] = AuthComponent::password($this->request->data['code']);
+            $hash = Security::hash($this->request->data['code'], null, true);
             
-            $user = $this->User->findByPlayerId($this->request->data['code']);
+            $user = $this->User->findByPlayerId($hash);
             
             if ($user === false){
                 //データが見つからなかった
@@ -71,7 +109,7 @@ class RegisterController extends AppController {
             $this->User->create();
             
             //プレイヤーIDをハッシュ化
-            $this->request->data['User']['player_id'] = AuthComponent::password($this->request->data['User']['player_id']);
+            $this->request->data['User']['player_id'] = Security::hash($this->request->data['User']['player_id'], null, true);
             $this->User->set($this->request->data);
  
             if ($this->User->validates()) {

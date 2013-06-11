@@ -42,6 +42,9 @@ function CheckPlayerRegister_Ajax(code){
             }else {
                 $('#result').text("エラー！");
             }
+        },
+        error: function(a,b,c){
+            alert(c);
         }
 	});
 }

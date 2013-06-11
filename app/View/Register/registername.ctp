@@ -1,11 +1,11 @@
-<?php echo $this->Form->create('User'); ?>
-<div class="left">最初からやり直し</div> 
-<div class="right">入力しない</div>
+<?php echo $this->Html->link("最初からやり直し",array('controller' => 'Register', 'action' => 'qrread' ),array('class' => 'left')) ?>
+<?php echo $this->Html->link("入力しない",array('controller' => 'Register', 'action' => 'confirm' ),array('class' => 'right')) ?>
 <div class="clear">
 <div id="register_name">
-    <div id="disp_id"></div>
+    <?php echo $this->Form->create('User',array( 'url' => array('controller' => 'Register', 'action' => 'confirm'))); ?>
+    <div>選手ID:<?php echo $register['player_id']; ?></div>
     <div>選手名(本名)を入力してください</div>
-    <?php echo $this->Form->text('username',array('label' => false, 'value' => "")); ?>
+    <?php echo $this->Form->text('username',array('label' => false, 'default' => $register['name'])); ?>
     <?php echo $this->Form->hidden('player_id'); ?>
     <?php echo $this->Form->submit('入力完了',array('label' => false)); ?>
 </div>
