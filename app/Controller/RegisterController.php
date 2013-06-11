@@ -48,7 +48,6 @@ class RegisterController extends AppController {
             $this->redirect(array('action' => 'qrread'));
         }
        
-       $this->Session->write('Register.name',"");   //POSTがなければ名前はなし
        if ($this->request->is('post')) {
             $this->Session->write('Register.name',$this->request->data['User']['username']);    //セッションに保存             
        }
@@ -65,6 +64,40 @@ class RegisterController extends AppController {
     
     //選手宣誓
     function oath() {
+        
+    }
+    
+    //選手追加
+    function registered() {
+        
+        if ($this->request->is('post')) {
+            //セッションが無かったらリダイレクト
+            if ($this->Session->check('Register') == false){
+                $this->redirect(array('action' => 'qrread'));
+            }
+
+
+            $this->User->create();
+
+            //プレイヤーIDをハッシュ化
+            $hash = Security::hash($this->Session->read('Register.player_id'), null, true);
+
+            $player=$this->User->findByPlayerId($hash);
+
+            $player['User']['username'] = $this->Session->read('Register.name'); //名前を決定
+            $player['User']['create_user'] = 1; //使用済みに変更
+
+            $this->User->set($player);
+
+            if ($this->User->validates()) {
+                $this->User->save();
+                $this->Session->delete('Register');
+            }else{
+
+            }
+        }else{
+          $this->redirect(array('action' => 'qrread'));  
+        }  
     }
     
     //選手QRCodeチェック
@@ -100,28 +133,6 @@ class RegisterController extends AppController {
         }
     }
 
-    /**
-     * 選手追加機能
-     */
-    function add() {
-        
-        if ($this->request->is('post')) {
-            $this->User->create();
-            
-            //プレイヤーIDをハッシュ化
-            $this->request->data['User']['player_id'] = Security::hash($this->request->data['User']['player_id'], null, true);
-            $this->User->set($this->request->data);
- 
-            if ($this->User->validates()) {
-                $this->User->save($this->request->data);
-                $this->Session->setFlash('選手登録が完了しました！');
-            }else{
-                $this->Session->setFlash('選手登録に失敗しました。この選手IDはすでに登録されています。');
-            }
-         
-        }
-        
-    }
     
 }
 
