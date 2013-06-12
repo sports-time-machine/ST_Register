@@ -40,7 +40,7 @@ function CheckPlayerRegister_Ajax(code){
             }else if (html == "Registered") {
                 $('#result').text("エラー！この選手QRコードはすでに登録されています");
             }else {
-                $('#result').text("エラー！");
+                $('#result').text("エラー！もう一度読み込みしてください");
             }
         },
         error: function(a,b,c){
@@ -122,7 +122,6 @@ $(function(){
     
 });
 </script>
-
 <?php echo $this->Form->create('User',array( 'url' => array('controller' => 'Register', 'action' => 'registername'))); ?>
 <div>選手カードにあるQRコードをかざしてボタンを押してください</div>
 <div id="camera">

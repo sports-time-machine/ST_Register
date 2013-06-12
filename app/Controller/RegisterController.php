@@ -76,27 +76,23 @@ class RegisterController extends AppController {
                 $this->redirect(array('action' => 'qrread'));
             }
 
-
             $this->User->create();
 
-            //プレイヤーIDをハッシュ化
-            $hash = Security::hash($this->Session->read('Register.player_id'), null, true);
-
-            $player=$this->User->findByPlayerId($hash);
-
+            //プレイヤーを逆引き
+            $player=$this->User->findByPlayerId($this->Session->read('Register.player_id'));
             $player['User']['username'] = $this->Session->read('Register.name'); //名前を決定
             $player['User']['create_user'] = 1; //使用済みに変更
 
             $this->User->set($player);
-
             if ($this->User->validates()) {
                 $this->User->save();
                 $this->Session->delete('Register');
             }else{
-
+                $this->Session->delete('Register');
             }
         }else{
-          $this->redirect(array('action' => 'qrread'));  
+            //POST以外で来たらQRコード読み込み画面へリダイレクト
+            $this->redirect(array('action' => 'qrread'));  
         }  
     }
     
@@ -111,16 +107,13 @@ class RegisterController extends AppController {
                 return;
             }
            
-            //ハッシュ化
-            $hash = Security::hash($this->request->data['code'], null, true);
-            
-            $user = $this->User->findByPlayerId($hash);
+            $user = $this->User->findByPlayerId($this->request->data['code']);
             
             if ($user === false){
                 //データが見つからなかった
                 echo "NoData";
                 return;
-            }else if ($user['User']['create_user'] == 0){
+            }else if ($user['User']['create_user'] == 0){   //最終的に違うフィールドになる予定
                 //create_userが0だったら未登録(DBのcreate_userの使い方間違ってたらスミマセン)
                 echo "OK";
                 return;
