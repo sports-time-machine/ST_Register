@@ -20,7 +20,7 @@ echo $this -> Html -> script( 'webcam/databr', array( 'inline' => false ) );
 <script type="text/javascript">
     
 //読み込まれたQRコードが既に選手登録済み、もしくは、予め登録されていないQRコードかチェック
-function CheckPlayerRegister_Ajax(code){
+function checkPlayerRegister_Ajax(code){
     var url = "<?php echo $this->Html->webroot . 'register/check'; ?>";
     var data = { code : code};
 
@@ -36,20 +36,25 @@ function CheckPlayerRegister_Ajax(code){
                 $('#UserPlayerId').val(code);
                 $('form').submit();
             }else if (html == "NoData") {
-                $('#result').text("エラー！あらかじめ登録された選手QRコードではありません");
+                showModal("エラー！あらかじめ登録された選手QRコードではありません");
             }else if (html == "Registered") {
-                $('#result').text("エラー！この選手QRコードはすでに登録されています");
+                showModal("エラー！この選手QRコードはすでに登録されています");
             }else {
-                $('#result').text("エラー！もう一度読み込みしてください");
+                showModal("エラー！もう一度読み込みしてください");
             }
         },
-        error: function(a,b,c){
-            alert(c);
+        error: function(){
+            showModal("エラー！サーバとの通信に失敗しました");
         }
 	});
 }
 
-    
+//エラーをモーダルで表示
+function showModal(mes){
+    $('#result').text(mes); 
+    $("#errorModal").modal("show");
+}
+  
 $(function(){
     var video = document.getElementById('video');
     var canvas = document.getElementById('canvas');
@@ -93,44 +98,60 @@ $(function(){
         var reg = /[A-Z0-9]{4}/;    //文字アルファベット４つだとマッチ
         
         if (result.match(reg)){
-            CheckPlayerRegister_Ajax(result); 
-            $('#read').removeAttr('disabled');
+            checkPlayerRegister_Ajax(result); 
         }else{
-            $('#result').text("読み込みに失敗しました。読み込んだQRコードは選手QRコードではありません。");   
-            $('#read').removeAttr('disabled');
+            showModal("読み込みに失敗しました。読み込んだQRコードは選手QRコードではありません。");  
         }
-      }else{
-          $('#result').text("読み込みに失敗しました。読み込んだQRコードを読み取れませんでした。");  
-          $('#read').removeAttr('disabled');
       }
+
     };
       
     //ボタンイベント
     $("#read").click(function() {
     
+        intervalId = setInterval(function(){
+          
+            if (localMediaStream) {
+                ctx.drawImage(video, 0, 0);
+                // QRコード取得開始
+                qrcode.decode(canvas.toDataURL('image/webp'));        
+            }     
+            
+        },500);
+
+        //10秒経過するとタイムアウト
+        timeoutId = setTimeout(function(){
+            showModal("読み込みに失敗しました。QRコードを読み取れませんでした。");
+        },10000);
+
         $("#read").attr('disabled', true);
-        $('#result').text("QRコードを読み取り中です…");
-        
-        if (localMediaStream) {
-            ctx.drawImage(video, 0, 0);
-            // QRコード取得開始
-            qrcode.decode(canvas.toDataURL('image/webp'));        
-        }else{
-            $('#read').removeAttr('disabled');
-        }            
+        $('#info').text("QRコードを読み取り中です…");
+       
     });
     
+    //エラー表示時には
+    $("#errorModal").on('show',function(){
+        clearInterval(intervalId);
+        clearTimeout(timeoutId);        
+    });
+    
+    $("#errorModal").on('hidden',function(){
+        $('#read').removeAttr('disabled');
+        $('#info').text("選手カードにあるQRコードをかざしてボタンを押してください");  
+    });
+    
+     
 });
 </script>
 <?php echo $this->Form->create('User',array( 'url' => array('controller' => 'Register', 'action' => 'registername'))); ?>
-<div>選手カードにあるQRコードをかざしてボタンを押してください</div>
 <div id="camera">
     <video id="video" autoplay width="320" height="240"></video> 
     <canvas id="canvas" ></canvas>
 </div>
 <?php echo $this->Form->button('読み込み',array('type' => 'button', 'div' => false, 'id' => 'read')) ?>
-
-
 <?php echo $this->Form->hidden('player_id'); ?>
 
-<div  class="error" id="result"></div>
+<div id="info">選手カードにあるQRコードをかざしてボタンを押してください</div>
+<div class="modal hide fade" id="errorModal">
+    <div class="error modal-body" id="result"></div>
+</div>
