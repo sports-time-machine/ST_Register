@@ -18,7 +18,7 @@ $(function(){
     <div>選手名(本名)を入力してください</div>
     <?php echo $this->Form->text('username',array('label' => false, 'default' => $register['name'])); ?>
     <?php echo $this->Form->hidden('player_id'); ?>
-    <?php echo $this->Form->submit('入力完了',array('label' => false)); ?>
+    <?php echo $this->Form->submit('入力完了',array('label' => false, 'class' => 'btn')); ?>
 </div>
 <div>
     ここで名前を入力しておくと<br />

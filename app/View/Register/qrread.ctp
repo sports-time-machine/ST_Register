@@ -30,7 +30,6 @@ function checkPlayerRegister_Ajax(code){
 		data: data,
 		async: true,
 		success: function(html){
-
             if (html=="OK") {
                 $('#result').text("読み込み成功！");
                 $('#UserPlayerId').val(code);
@@ -98,6 +97,10 @@ $(function(){
         var reg = /[A-Z0-9]{4}/;    //文字アルファベット４つだとマッチ
         
         if (result.match(reg)){
+            //読み込みできたら時間経過のイベント消去
+            //非同期通信時にタイムアウトや読み込みを防ぐため
+            clearInterval(intervalId);
+            clearTimeout(timeoutId);        
             checkPlayerRegister_Ajax(result); 
         }else{
             showModal("読み込みに失敗しました。読み込んだQRコードは選手QRコードではありません。");  
@@ -129,12 +132,13 @@ $(function(){
        
     });
     
-    //エラー表示時には
+    //エラー表示時には、時間経過系のイベントを全て消去
     $("#errorModal").on('show',function(){
         clearInterval(intervalId);
         clearTimeout(timeoutId);        
     });
     
+    //読み込みボタンの復活
     $("#errorModal").on('hidden',function(){
         $('#read').removeAttr('disabled');
         $('#info').text("選手カードにあるQRコードをかざしてボタンを押してください");  
@@ -148,7 +152,7 @@ $(function(){
     <video id="video" autoplay width="320" height="240"></video> 
     <canvas id="canvas" ></canvas>
 </div>
-<?php echo $this->Form->button('読み込み',array('type' => 'button', 'div' => false, 'id' => 'read')) ?>
+<?php echo $this->Form->button('読み込み',array('type' => 'button', 'div' => false, 'id' => 'read', 'class' => 'btn')) ?>
 <?php echo $this->Form->hidden('player_id'); ?>
 
 <div id="info">選手カードにあるQRコードをかざしてボタンを押してください</div>
