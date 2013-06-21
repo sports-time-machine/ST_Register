@@ -31,7 +31,6 @@ function checkPlayerRegister_Ajax(code){
 		async: true,
 		success: function(html){
             if (html=="OK") {
-                $('#result').text("読み込み成功！");
                 $('#UserPlayerId').val(code);
                 $('form').submit();
             }else if (html == "NoData") {
@@ -42,8 +41,8 @@ function checkPlayerRegister_Ajax(code){
                 showModal("エラー！もう一度読み込みしてください");
             }
         },
-        error: function(){
-            showModal("エラー！サーバとの通信に失敗しました");
+        error: function(a,b,c){
+            showModal("エラー！サーバ内部エラーです。担当者を呼んでください");
         }
 	});
 }

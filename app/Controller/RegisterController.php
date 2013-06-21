@@ -1,10 +1,9 @@
 <?php
 App::uses('AppController', 'Controller');
-App::uses('Security', 'Utility');
 
 class RegisterController extends AppController {
 	
-    public $uses = array('User');
+    public $uses = array('User','Name');
     public $layout='stm';
 
 	public function beforeFilter() {
@@ -76,16 +75,17 @@ class RegisterController extends AppController {
                 $this->redirect(array('action' => 'qrread'));
             }
 
-            $this->User->create();
+            $this->Name->create();
 
             //プレイヤーを逆引き
             $player=$this->User->findByPlayerId($this->Session->read('Register.player_id'));
-            $player['User']['username'] = $this->Session->read('Register.name'); //名前を決定
-            $player['User']['create_user'] = 1; //使用済みに変更
-
-            $this->User->set($player);
-            if ($this->User->validates()) {
-                $this->User->save();
+            
+            $name['Name']['user_id'] = $player['User']['id'];
+            $name['Name']['username'] = $this->Session->read('Register.name'); //名前を決定
+            
+            $this->Name->set($name);
+            if ($this->Name->validates()) {
+                $this->Name->save();
                 $this->Session->delete('Register');
             }else{
                 $this->Session->delete('Register');
@@ -108,21 +108,26 @@ class RegisterController extends AppController {
             }
            
             $user = $this->User->findByPlayerId($this->request->data['code']);
-            
+                        
             if ($user === false){
                 //データが見つからなかった
                 echo "NoData";
                 return;
-            }else if ($user['User']['create_user'] == 0){   //最終的に違うフィールドになる予定
-                //create_userが0だったら未登録(DBのcreate_userの使い方間違ってたらスミマセン)
-                echo "OK";
-                return;
             }else{
-                //すでに選手登録済み
-                echo "Registered";
-                return;
+                            
+                $name = $this->Name->findByUserId($user['User']['id']);
+    
+                //対象ユーザIDが無かったら未登録と判定
+                if ($name == false){
+                    //未登録
+                    echo "OK";
+                    return;
+                }else{
+                    //すでに選手登録済み
+                    echo "Registered";
+                    return;            
+                }
             }
-
         }
     }
 
