@@ -31,7 +31,7 @@ function checkPlayerRegister_Ajax(code){
 		async: true,
 		success: function(html){
             if (html=="OK") {
-                $('#UserPlayerId').val(code);
+                $('#player_id').val(code);
                 $('form').submit();
             }else if (html == "NoData") {
                 showModal("エラー！あらかじめ登録された選手QRコードではありません");
@@ -146,14 +146,14 @@ $(function(){
      
 });
 </script>
-<?php echo $this->Form->create('User',array( 'url' => array('controller' => 'Register', 'action' => 'registername'))); ?>
+<form action="/ST_Register/Register/registername" id="QrreadForm" method="post" accept-charset="utf-8">
 <div id="camera">
     <video id="video" autoplay width="320" height="240"></video> 
     <canvas id="canvas" ></canvas>
 </div>
 <?php echo $this->Form->button('読み込み',array('type' => 'button', 'div' => false, 'id' => 'read', 'class' => 'btn')) ?>
 <?php echo $this->Form->hidden('player_id'); ?>
-
+</form>
 <div id="info">選手カードにあるQRコードをかざしてボタンを押してください</div>
 <div class="modal hide fade" id="errorModal">
     <div class="error modal-body" id="result"></div>

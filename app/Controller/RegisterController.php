@@ -28,7 +28,7 @@ class RegisterController extends AppController {
     function registername() {
                 
         if ($this->request->is('post')) {
-            $this->Session->write('Register.player_id',$this->request->data['User']['player_id']);    //セッションに保存
+            $this->Session->write('Register.player_id',$this->request->data['player_id']);    //セッションに保存
             $this->Session->write('Register.name',"");    //セッションに保存             
         }
         
@@ -38,7 +38,6 @@ class RegisterController extends AppController {
         }
         $this->set('register',$this->Session->read('Register'));
     }
-    
     //確認
     function confirm() {
         
@@ -48,22 +47,29 @@ class RegisterController extends AppController {
         }
        
        if ($this->request->is('post')) {
-            $this->Session->write('Register.name',$this->request->data['User']['username']);    //セッションに保存             
+            $data['username'] = $this->request->data['username'];
+            $data['username'] = mb_convert_kana($data['username'], "s"); //全角スペースを半角スペースに変換
+            $data['username'] = trim($data['username']);    //前後の半角スペースを削除
+            $this->Session->write('Register.name',$data['username']);    //セッションに保存   
        }
-    
-        //名前の空白判定は後でもう少ししっかりとやる。(全角スペースのみを空白判定、後ろの空白除去など)
+
         $disp_name = $this->Session->read('Register.name');    //名前を読み込み
         if (empty($disp_name)){
             $disp_name = "記入なし";
         }
-        
+   
+        $this->set('register',$this->Session->read('Register'));              
         $this->set('disp_name',$disp_name);
-        $this->set('register',$this->Session->read('Register'));      
+       
+       
     }
     
     //選手宣誓
     function oath() {
-        
+        //セッションが無かったらリダイレクト
+        if ($this->Session->check('Register') == false){
+            $this->redirect(array('action' => 'qrread'));
+        }
     }
     
     //選手追加
