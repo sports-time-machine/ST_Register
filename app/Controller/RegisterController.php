@@ -40,7 +40,8 @@ class RegisterController extends AppController {
         if ($this->Session->check('Register') == false){
             $this->redirect(array('action' => 'qrread'));
         }
-        $this->set('register',$this->Session->read('Register'));
+        $this->set('maxlength', NAME_MAX_LENGTH);
+        $this->set('register', $this->Session->read('Register'));
     }
     //確認
     function confirm() {
