@@ -28,7 +28,7 @@ class RegisterController extends AppController {
     function registername() {
                 
         if ($this->request->is('post')) {
-            $this->Session->write('Register.player_id',$this->request->data['player_id']);    //セッションに保存
+            $this->Session->write('Register.player_id',h($this->request->data['player_id']));    //セッションに保存
             $this->Session->write('Register.name',"");    //セッションに保存             
         }
         
@@ -47,7 +47,7 @@ class RegisterController extends AppController {
         }
        
        if ($this->request->is('post')) {
-            $data['username'] = $this->request->data['username'];
+            $data['username'] = h($this->request->data['username']);
             $data['username'] = mb_convert_kana($data['username'], "s"); //全角スペースを半角スペースに変換
             $data['username'] = trim($data['username']);    //前後の半角スペースを削除
             $this->Session->write('Register.name',$data['username']);    //セッションに保存   
@@ -113,7 +113,7 @@ class RegisterController extends AppController {
                 return;
             }
            
-            $user = $this->User->findByPlayerId($this->request->data['code']);
+            $user = $this->User->findByPlayerId(h($this->request->data['code']));
                         
             if ($user === false){
                 //データが見つからなかった
