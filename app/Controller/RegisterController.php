@@ -88,14 +88,19 @@ class RegisterController extends AppController {
             
             $name['Name']['user_id'] = $player['User']['id'];
             $name['Name']['username'] = $this->Session->read('Register.name'); //名前を決定
+
+            //名無しだったらNULLを代入
+            if (strcmp($name['Name']['username'],"") == 0){
+                $name['Name']['username']=NULL;
+                $this->render("registered_noname");  //Viewを変える
+            }
             
             $this->Name->set($name);
-            if ($this->Name->validates()) {
-                $this->Name->save();
-                $this->Session->delete('Register');
-            }else{
-                $this->Session->delete('Register');
-            }
+            $this->Name->save();
+            $this->set('player_id', $player['User']['player_id']);
+
+            $this->Session->delete('Register');
+        
         }else{
             //POST以外で来たらQRコード読み込み画面へリダイレクト
             $this->redirect(array('action' => 'qrread'));  

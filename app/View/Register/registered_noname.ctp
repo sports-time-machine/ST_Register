@@ -3,9 +3,7 @@
 
     <div>
     選手として登録されました！<br>
-    あなたの選手ページは
-    http://sptmy.net/<?php echo $player_id ?>
-    です。
+    無記名で登録したため、選手ページにはアクセスできません。
     </div>
     <?php echo $this->Html->link("戻る",array('controller' => 'Register', 'action' => 'qrread' )); ?>
     
