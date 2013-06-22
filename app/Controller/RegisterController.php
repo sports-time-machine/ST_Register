@@ -1,11 +1,15 @@
 <?php
-App::uses('AppController', 'Controller');
 
+App::uses('AppController', 'Controller');
+define("NAME_MAX_LENGTH",32);
+    
 class RegisterController extends AppController {
 	
     public $uses = array('User','Name');
     public $layout='stm';
 
+
+    
 	public function beforeFilter() {
     }
 	
@@ -47,10 +51,23 @@ class RegisterController extends AppController {
         }
        
        if ($this->request->is('post')) {
-            $data['username'] = h($this->request->data['username']);
-            $data['username'] = mb_convert_kana($data['username'], "s"); //全角スペースを半角スペースに変換
-            $data['username'] = trim($data['username']);    //前後の半角スペースを削除
-            $this->Session->write('Register.name',$data['username']);    //セッションに保存   
+                             
+           $username = h($this->request->data['username']);    
+           
+           //通常の操作で選手名が最大文字数を超えることはないが、
+           //リクエストの改ざんなどがあるかもしれないのでチェック
+           //（ローカルしか使わないのでいらないかもしれないけど）
+           //もし引っかかったらログイン画面へリダイレクト
+           if (mb_strlen($username) > NAME_MAX_LENGTH){
+               $this->redirect(array('action' => 'qrread'));
+           }
+          
+           $username = mb_convert_kana($username, "s"); //全角スペースを半角スペースに変換
+           $username = trim($username);    //前後の半角スペースを削除
+           
+
+           
+           $this->Session->write('Register.name',$username);    //セッションに保存   
        }
 
         $disp_name = $this->Session->read('Register.name');    //名前を読み込み

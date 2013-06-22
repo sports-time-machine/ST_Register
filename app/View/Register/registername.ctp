@@ -14,7 +14,7 @@ $(function(){
     <form action="/ST_Register/Register/confirm" id="RegisternameForm" method="post" accept-charset="utf-8">
         <div>選手ID:<?php echo $register['player_id']; ?></div>
         <div>選手名(本名)を入力してください</div>
-        <?php echo $this->Form->text('username',array('label' => false, 'default' => $register['name'], "maxlength" => "255")); ?>
+        <?php echo $this->Form->text('username',array('label' => false, 'default' => $register['name'], "maxlength" => "32")); ?>
         <?php echo $this->Form->hidden('player_id'); ?>
         <?php echo $this->Form->submit('入力完了',array('label' => false, 'class' => 'btn')); ?>
     </form>
