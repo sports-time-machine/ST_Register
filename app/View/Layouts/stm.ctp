@@ -36,13 +36,13 @@
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
-
 </head>
 <body>
-
+    <div id="header">
+        <?php echo $this->element('header'); ?>
+    </div>
     <div id="content" class="clear">
         <?php echo $this->fetch('content'); ?>
     </div>
-    
 </body>
 </html>

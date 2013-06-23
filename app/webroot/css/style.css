@@ -1,59 +1,77 @@
 * { margin: 0; padding: 0; outline:0; }
 
 body {
-    font-size: 14px;
-    color: #4c4c4c;
-    background: #fff;
-    border-top: 6px solid #666666;
+    color: #ffffff;
+    background: #f47321;
     padding: 16px;
     margin: 0 auto;
-    width:950px;
+    
+    text-align: center;
 }
+
 #header {
-    height: 32px;
+    font-size: 50px;
+    margin: 32px;
+    height: 110px;
+}
+
+#header div{
+    padding: 8px;
 }
 
 #content {
-    text-align: center;
+    font-size: 30px;
+}
+#content div{
+    padding: 12px;
+}
+
+#info{
+    height: 75px;
 }
 
 a { color: #0252aa; text-decoration: none; cursor:pointer; }
 a:hover { text-decoration: underline; }
 a img { border: 0; }
 
-input, textarea, select { font-size: 12px; font-family: Arial, Helvetica, sans-serif; }
-textarea { overflow: auto; }
+input, textarea, select { font-size: 30px; }
 input { border: 0; }
-
-.cl { display: block; height: 0; font-size: 0; line-height: 0; text-indent: -4000px; clear: both; }
-.notext { font-size: 0; line-height: 0; text-indent: -4000px; }
 
 .left, .alignleft { float: left; display: inline; }
 .right, .alignright { float: right; display: inline; }
 .clear {clear: both;}
 
-.last { margin-right: 0 !important; }
-
 .error {
     color: #ff0033;
 }
 
+.modal {
+
+}
+
+.btn {
+    font-size: 40px;
+    width:350px;
+    height:80px;
+}
 
 #camera{
-    width: 340px;
-    height: 260px;
+    width: 480px;
+    height: 360px;
     margin: 0 auto;
 }
 
 #camera video{
-    width: 320px;
-    height: 240px;
-    border: 3px solid #cccccc;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px; 
+    width: 480px;
+    height: 360px;
 }
 
 #camera canvas{
     display:none;
+}
+
+#username {
+    font-size: 30px;
+    width: 700px;
+    height: 60px;
 }

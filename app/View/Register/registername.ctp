@@ -7,21 +7,22 @@ $(function(){
     });
 });
 </script>
-<?php echo $this->Html->link("最初からやり直し",array('controller' => 'Register', 'action' => 'qrread' ),array('class' => 'left')) ?>
-<?php echo $this->Html->link("入力しない","#",array('class' => 'right', 'id' => 'noName')) ?>
 <div class="clear">
-    <div id="register_name">
     <form action="/ST_Register/Register/confirm" id="RegisternameForm" method="post" accept-charset="utf-8">
-        <div>選手ID:<?php echo $register['player_id']; ?></div>
-        <div>選手名(本名)を入力してください</div>
-        <?php echo $this->Form->text('username',array('label' => false, 'default' => $register['name'], "maxlength" => $maxlength)); ?>
-        <?php echo $this->Form->hidden('player_id'); ?>
-        <?php echo $this->Form->submit('入力完了',array('label' => false, 'class' => 'btn')); ?>
+        <div id="register_name">
+
+                <div>せんしゅID:<?php echo $register['player_id']; ?></div>
+                <div>せんしゅめい(ほんみょう)を入力してください</div>
+                <?php echo $this->Form->text('username',array('label' => false, 'default' => $register['name'] , "maxlength" => $maxlength)); ?>
+                <?php echo $this->Form->hidden('player_id'); ?>
+                <?php echo $this->Form->submit('けってい',array('label' => false, 'class' => 'btn')); ?>    </div>
+        <div>
+            <div>ここで「せんしゅめい」を入力しておくと</div>
+            <div>お家のインターネットで自分の情報を見たり、変更したりできます</div>
+            <?php echo $this->Form->button('入力しない',array('label' => false, 'class' => 'btn', 'id' => 'noName')); ?>
+            <div>ちゅうい！</div>
+            <div>「せんしゅめい」を忘れた場合は、過去の情報は見られなくなります</div>
+            <div>忘れないでください</div>
+        </div>
     </form>
-    </div>
-    <div>
-        ここで名前を入力しておくと<br />
-        インターネットで自分の情報を見たり、変更したりできます<br />
-        名前を忘れた場合は、新しく選手登録になり過去のデータは見られなくなります。<br />
-    </div>
 </div>

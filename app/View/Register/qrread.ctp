@@ -34,22 +34,22 @@ function checkPlayerRegister_Ajax(code){
                 $('#player_id').val(code);
                 $('form').submit();
             }else if (html == "NoData") {
-                showModal("エラー！あらかじめ登録された選手QRコードではありません");
+                showModal("<div>よみこみにしっぱいしました</div><div>とうろくされたせんしゅ</div><div>QRコードではありません</div>");
             }else if (html == "Registered") {
-                showModal("エラー！この選手QRコードはすでに登録されています");
+                showModal("<div>よみこみにしっぱいしました</div><div>このせんしゅQRコードは</div><div>すでにとうろくされています</div>");
             }else {
-                showModal("エラー！もう一度読み込みしてください");
+                showModal("<div>よみこみにしっぱいしました</div><div>もういちどよみこみボタンを押してください</div>");
             }
         },
         error: function(a,b,c){
-            showModal("エラー！サーバ内部エラーです。担当者を呼んでください");
+            showModal("<div>サーバエラーです。</div><div>かかりの人をよんでください</div>");
         }
 	});
 }
 
 //エラーをモーダルで表示
 function showModal(mes){
-    $('#result').text(mes); 
+    $('#result').html(mes); 
     $("#errorModal").modal("show");
 }
   
@@ -79,7 +79,7 @@ $(function(){
 
     navigator.getUserMedia({video: true},
         function(stream) {
-          video.src = window.URL.createObjectURL(stream);
+          video.src = stream;
           localMediaStream = stream;
         },
         function(err){
@@ -102,7 +102,7 @@ $(function(){
             clearTimeout(timeoutId);        
             checkPlayerRegister_Ajax(result); 
         }else{
-            showModal("読み込みに失敗しました。読み込んだQRコードは選手QRコードではありません。");  
+            //showModal("<div>よみこみにしっぱいしました</div><div>せんしゅQRコードではありません</div>");
         }
       }
 
@@ -123,11 +123,11 @@ $(function(){
 
         //10秒経過するとタイムアウト
         timeoutId = setTimeout(function(){
-            showModal("読み込みに失敗しました。QRコードを読み取れませんでした。");
+            showModal("<div>よみこみにしっぱいしました</div><div>もういちどよみこみボタンを押してください</div>");
         },10000);
 
         $("#read").attr('disabled', true);
-        $('#info').text("QRコードを読み取り中です…");
+        $('#info').html("<div>よみとり中です…</div><div>せんしゅカードのQRコードをうつしてください</div>");
        
     });
     
@@ -140,7 +140,7 @@ $(function(){
     //読み込みボタンの復活
     $("#errorModal").on('hidden',function(){
         $('#read').removeAttr('disabled');
-        $('#info').text("選手カードにあるQRコードをかざしてボタンを押してください");  
+        $('#info').html("<div>せんしゅカードのQRコードをうつして</div><div>「よみこみ」ボタンを押してください</div>");  
     });
     
      
@@ -148,13 +148,16 @@ $(function(){
 </script>
 <form action="/ST_Register/Register/registername" id="QrreadForm" method="post" accept-charset="utf-8">
 <div id="camera">
-    <video id="video" autoplay width="320" height="240"></video> 
+    <video id="video" autoplay width="480" height="360"></video> 
     <canvas id="canvas" ></canvas>
 </div>
-<?php echo $this->Form->button('読み込み',array('type' => 'button', 'div' => false, 'id' => 'read', 'class' => 'btn')) ?>
-<?php echo $this->Form->hidden('player_id'); ?>
-</form>
-<div id="info">選手カードにあるQRコードをかざしてボタンを押してください</div>
+<div id="info">
+    <div>せんしゅカードのQRコードをうつして</div>
+    <div>「よみこみ」ボタンを押してください</div>
+</div>
 <div class="modal hide fade" id="errorModal">
     <div class="error modal-body" id="result"></div>
 </div>
+<?php echo $this->Form->button('よみこみ',array('type' => 'button', 'div' => false, 'id' => 'read', 'class' => 'btn')) ?>
+<?php echo $this->Form->hidden('player_id'); ?>
+</form>

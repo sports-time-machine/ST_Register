@@ -73,7 +73,7 @@ class RegisterController extends AppController {
 
         $disp_name = $this->Session->read('Register.name');    //名前を読み込み
         if (empty($disp_name)){
-            $disp_name = "記入なし";
+            $disp_name = "(せんしゅめいはありません)";
         }
    
         $this->set('register',$this->Session->read('Register'));              

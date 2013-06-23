@@ -1,12 +1,20 @@
-<?php echo $this->Html->link("前に戻る",array('controller' => 'Register', 'action' => 'registername' ),array('class' => 'left')) ?>
-
+<script type="text/javascript">
+$(function(){
+    $('#prev').click(function(){
+        location.href = '/ST_Register/Register/registername';
+        return false;
+    });
+});
+</script>
 <div class="clear">
     <form action="/ST_Register/Register/oath" id="ConfirmForm" method="post" accept-charset="utf-8">
-        <div>選手ID:<?php echo $register['player_id']; ?></div>
-        <div>選手名:<?php echo $disp_name; ?></div>
-        <?php echo $this->Form->submit('確認',array('label' => false, 'class' => 'btn')); ?>
+        <div>この「せんしゅめい」でよろしいですか？</div>
+        <div>せんしゅID:<?php echo $register['player_id']; ?></div>
+        <div><?php echo $disp_name; ?></div>
+        <?php echo $this->Form->submit('けってい',array('label' => false, 'class' => 'btn')); ?>
+        <?php echo $this->Form->button('やりなおし',array('label' => false, 'class' => 'btn', 'id' => 'prev')); ?>
     </form>
 </div>
 <div>
-    この選手名を絶対に忘れないでくださいね
+    このせんしゅめいをぜったいに忘れないでくださいね
 </div>

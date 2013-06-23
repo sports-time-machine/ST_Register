@@ -1,14 +1,20 @@
-
+<script type="text/javascript">
+$(function(){
+    $('#first').click(function(){
+        location.href = '/ST_Register/';
+        return false;
+    });
+});
+</script>
 <div class="clear">
-
-    <div>
-    選手として登録されました！<br>
-    あなたの選手ページは
-    http://sptmy.net/<?php echo $player_id ?>
-    です。
+    <div>せんしゅとしてとうろくされました！</div>
+    <div>あなたのせんしゅページは</div>
+    <div>http://sptmy.net/<?php echo $player_id ?></div>
+    <div>です</div>
     </div>
-    <?php echo $this->Html->link("戻る",array('controller' => 'Register', 'action' => 'qrread' )); ?>
-    
+    <div>
+        <?php echo $this->Form->button('わかりました',array('label' => false, 'class' => 'btn', 'id' => 'first')); ?>    
+    </div>
 </div>
 
 

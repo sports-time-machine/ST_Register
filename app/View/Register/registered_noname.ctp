@@ -1,12 +1,19 @@
-
+<script type="text/javascript">
+$(function(){
+    $('#first').click(function(){
+        location.href = '/ST_Register/';
+        return false;
+    });
+});
+</script>
 <div class="clear">
-
+    <div>せんしゅとしてとうろくされました！</div>
+    <div>「せんしゅめい」がなかったので</div>
+    <div>せんしゅページにはアクセスできません</div>
     <div>
-    選手として登録されました！<br>
-    無記名で登録したため、選手ページにはアクセスできません。
+        <?php echo $this->Form->button('わかりました',array('label' => false, 'class' => 'btn', 'id' => 'first')); ?>    
     </div>
-    <?php echo $this->Html->link("戻る",array('controller' => 'Register', 'action' => 'qrread' )); ?>
-    
 </div>
+
 
 
