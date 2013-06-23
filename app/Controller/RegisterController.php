@@ -7,11 +7,9 @@ class RegisterController extends AppController {
 	
     public $uses = array('User','Name');
     public $layout='stm';
-
-
     
 	public function beforeFilter() {
-    }
+        }
 	
 	public function beforeRender() {
 		parent::beforeRender();

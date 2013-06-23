@@ -79,8 +79,15 @@ $(function(){
 
     navigator.getUserMedia({video: true},
         function(stream) {
-          video.src = window.URL.createObjectURL(stream);
-          localMediaStream = stream;
+            //ST_RegisterはOperaでブラウズする。
+            //カメラを常に許可できるため。
+            //Operaのみ対応
+            //video.srcがstreamで受け取るブラウザと
+            //navigator.getUserMedia(stream)で受け取るブラウザ
+            //にわかれている。。。
+   
+            video.src = stream; 
+            localMediaStream = stream;
         },
         function(err){
             alert("未対応ブラウザです。");
@@ -148,7 +155,7 @@ $(function(){
 </script>
 <form action="/ST_Register/Register/registername" id="QrreadForm" method="post" accept-charset="utf-8">
 <div id="camera">
-    <video id="video" autoplay width="320" height="240"></video> 
+    <video id="video" autoplay width="480" height="360"></video> 
     <canvas id="canvas" ></canvas>
 </div>
 <?php echo $this->Form->button('読み込み',array('type' => 'button', 'div' => false, 'id' => 'read', 'class' => 'btn')) ?>
