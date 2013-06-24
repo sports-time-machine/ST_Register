@@ -29,8 +29,7 @@ function checkPlayerRegister_Ajax(code){
 		url: url + '?time=' + (new Date).getTime(),
 		data: data,
 		async: true,
-		success: function(html){
-            alert(html);
+		success: function(html){  
             if (html=="OK") {
                 $('#player_id').val(code);
                 $('form').submit();

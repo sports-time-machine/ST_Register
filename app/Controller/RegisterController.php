@@ -135,15 +135,15 @@ class RegisterController extends AppController {
             }
            
             $user = $this->User->findByPlayerId($this->request->data['code']);   
-            
+
             if ($user == false){
                 //データが見つからなかった
                 echo "NoData";
                 return;
             }else{
                             
-                $count = $this->Name->findCount(array( "user_id" => $user['User']['id']));
-    
+                $count = $this->Name->find('count', array( 'conditions' => array( "user_id" => $user['User']['id'])));
+                
                 //対象ユーザIDが無かったら未登録と判定
                 if ($count == 0){
                     //未登録
