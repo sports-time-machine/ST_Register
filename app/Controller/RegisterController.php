@@ -134,8 +134,7 @@ class RegisterController extends AppController {
                 return;
             }
            
-            $user = $this->User->findByPlayerId($this->request->data['code']);
-            echo $user;      
+            $user = $this->User->findByPlayerId($this->request->data['code']);   
             
             if ($user == false){
                 //データが見つからなかった
