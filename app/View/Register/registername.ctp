@@ -10,7 +10,6 @@ $(function(){
 <div class="clear">
     <form action="/ST_Register/Register/confirm" id="RegisternameForm" method="post" accept-charset="utf-8">
         <div id="register_name">
-
                 <div>せんしゅID:<?php echo $register['player_id']; ?></div>
                 <div>せんしゅめい(ほんみょう)を入力してください</div>
                 <?php echo $this->Form->text('username',array('label' => false, 'default' => $register['name'] , "maxlength" => $maxlength)); ?>

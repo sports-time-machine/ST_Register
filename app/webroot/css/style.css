@@ -76,3 +76,16 @@ input { border: 0; }
     width: 700px;
     height: 60px;
 }
+
+#disp_name{
+    height: 60px;
+    background: #ffffff;
+    color: #000000;
+    font-size: 35px;
+    margin: 30px;
+    top: 50%;
+}
+
+#disp_name p{
+    line-height: 60px;
+}
