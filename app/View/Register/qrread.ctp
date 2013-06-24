@@ -30,6 +30,7 @@ function checkPlayerRegister_Ajax(code){
 		data: data,
 		async: true,
 		success: function(html){
+            alert(html);
             if (html=="OK") {
                 $('#player_id').val(code);
                 $('form').submit();
@@ -109,7 +110,7 @@ $(function(){
             clearTimeout(timeoutId);        
             checkPlayerRegister_Ajax(result); 
         }else{
-            //showModal("<div>よみこみにしっぱいしました</div><div>せんしゅQRコードではありません</div>");
+            showModal("<div>よみこみにしっぱいしました</div><div>せんしゅQRコードではありません</div>");
         }
       }
 
