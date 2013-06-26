@@ -34,11 +34,11 @@ function checkPlayerRegister_Ajax(code){
                 $('#player_id').val(code);
                 $('form').submit();
             }else if (html == "NoData") {
-                showModal("<div>よみこみにしっぱいしました</div><div>とうろくされたせんしゅ</div><div>QRコードではありません</div>");
+                showModal("<div>とうろくされたせんしゅ</div><div>QRコードではありません</div>");
             }else if (html == "Registered") {
-                showModal("<div>よみこみにしっぱいしました</div><div>このせんしゅQRコードは</div><div>すでにとうろくされています</div>");
+                showModal("<div>このせんしゅQRコードは</div><div>すでにとうろくされています</div>");
             }else {
-                showModal("<div>よみこみにしっぱいしました</div><div>もういちどよみこみボタンを押してください</div>");
+                showModal("<div>もういちどよみこみボタンを押してください</div>");
             }
         },
         error: function(a,b,c){
@@ -90,7 +90,7 @@ $(function(){
             localMediaStream = stream;
         },
         function(err){
-            alert("未対応ブラウザです。");
+            alert("カメラがありません。");
         }
     );
 
@@ -109,7 +109,7 @@ $(function(){
             clearTimeout(timeoutId);        
             checkPlayerRegister_Ajax(result); 
         }else{
-            showModal("<div>よみこみにしっぱいしました</div><div>せんしゅQRコードではありません</div>");
+            showModal("<div>せんしゅQRコードではありません</div>");
         }
       }
 
@@ -130,7 +130,7 @@ $(function(){
 
         //10秒経過するとタイムアウト
         timeoutId = setTimeout(function(){
-            showModal("<div>よみこみにしっぱいしました</div><div>もういちどよみこみボタンを押してください</div>");
+            showModal("<div>もういちどよみこみボタンを押してください</div>");
         },10000);
 
         $("#read").attr('disabled', true);
