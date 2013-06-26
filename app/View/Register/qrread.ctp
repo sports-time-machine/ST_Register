@@ -39,7 +39,7 @@ function checkPlayerRegister_Ajax(code){
             }else if (html == "Registered") {
                 showModal("<div>このせんしゅQRコードは</div><div>すでにとうろくされています</div>");
             }else {
-                showModal("<div>よみこみにしっぱいしました</div><div>もういちどよみこみボタンを押してください</div>");
+                showModal("<div>もういちどよみこみボタンを押してください</div>");
             }
         },
         error: function(a,b,c){
@@ -131,7 +131,7 @@ $(function(){
 
         //10秒経過するとタイムアウト
         timeoutId = setTimeout(function(){
-            showModal("<div>よみこみにしっぱいしました</div><div>もういちどよみこみボタンを押してください</div>");
+            showModal("<div>もういちどよみこみボタンを押してください</div>");
         },10000);
 
         $("#read").attr('disabled', true);

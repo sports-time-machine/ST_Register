@@ -74,6 +74,7 @@ class DATABASE_CONFIG {
 		'login' => 'st_register',
 		'password' => 'z1EJWIgvKxIzGIrX6Yxz',
 		'database' => 'st_register',
+		'database' => 'st_register_test',
 		'prefix' => '',
 		'port' => '3306',
 		'encoding' => 'utf8',
