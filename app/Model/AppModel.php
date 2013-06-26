@@ -32,5 +32,54 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
-    
+	
+	function __construct($id = false, $table = null, $ds = null) {
+		parent::__construct($id, $table, $ds);
+		
+		// 外部ファイルが存在すれば、バリデーションを初期化
+		$filename = APP . 'Config' . DS . 'validate' . DS . $this->name . '.php';
+		if (file_exists($filename)) {
+			require_once($filename);
+			$this->validate = Configure::read(strtoupper('VALIDATE_' . $this->name));
+		}
+		
+	}
+	
+	// モデルを読み込んでインスタンスを作成
+	public function loadModel($models) {
+		if (empty($models)) {
+			return;
+		}
+		
+		if (is_array($models)) {
+			foreach($models as $model) {
+				App::uses($model, 'Model');
+				$this->{$model} = new $model;
+				$this->{$model}->useDbConfig = $this->useDbConfig; // for UnitTest useDbConfigを引き継ぐ
+
+			}
+		} else {
+			App::uses($models, 'Model');
+			$this->{$models} = new $models;
+			$this->{$models}->useDbConfig = $this->useDbConfig; // for UnitTest useDbConfigを引き継ぐ
+		}
+	}
+	
+	/**
+	 * MySQLトランザクション用
+	 */
+	function begin() {
+		$db = ConnectionManager::getDataSource($this->useDbConfig);
+		$db->begin($this);
+	}
+
+	function commit() {
+		$db = ConnectionManager::getDataSource($this->useDbConfig);
+		$db->commit($this);
+	}
+
+	function rollback() {
+		$db = ConnectionManager::getDataSource($this->useDbConfig);
+		$db->rollback($this);
+	}
 }
