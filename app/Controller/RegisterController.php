@@ -134,6 +134,10 @@ class RegisterController extends AppController {
                 return;
             }
            
+            //最初のプレフィックスを無視
+            $this->request->data['code'] = substr($this->request->data['code'], 1);
+            
+            //DBから検索
             $user = $this->User->findByPlayerId($this->request->data['code']);   
 
             if ($user == false){

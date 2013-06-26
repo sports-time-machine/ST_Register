@@ -31,12 +31,13 @@ function checkPlayerRegister_Ajax(code){
 		async: true,
 		success: function(html){  
             if (html=="OK") {
-                $('#player_id').val(code);
+                //プレフィックスを削除
+                $('#player_id').val(code.substr(1));
                 $('form').submit();
             }else if (html == "NoData") {
-                showModal("<div>よみこみにしっぱいしました</div><div>とうろくされたせんしゅ</div><div>QRコードではありません</div>");
+                showModal("<div>とうろくされたせんしゅ</div><div>QRコードではありません</div>");
             }else if (html == "Registered") {
-                showModal("<div>よみこみにしっぱいしました</div><div>このせんしゅQRコードは</div><div>すでにとうろくされています</div>");
+                showModal("<div>このせんしゅQRコードは</div><div>すでにとうろくされています</div>");
             }else {
                 showModal("<div>よみこみにしっぱいしました</div><div>もういちどよみこみボタンを押してください</div>");
             }
@@ -90,7 +91,7 @@ $(function(){
             localMediaStream = stream;
         },
         function(err){
-            alert("未対応ブラウザです。");
+            alert("カメラがありません。");
         }
     );
 
@@ -100,7 +101,7 @@ $(function(){
       // QRコード取得結果を表示
       if (result != null) {
         //QRコード出力値のバリデーションを行わなければならない
-        var reg = /[A-Z0-9]{4}/;    //文字アルファベット４つだとマッチ
+        var reg = /^P[A-Z0-9]{8}/;    //P+文字アルファベット8つだとマッチ
         
         if (result.match(reg)){
             //読み込みできたら時間経過のイベント消去
@@ -109,7 +110,7 @@ $(function(){
             clearTimeout(timeoutId);        
             checkPlayerRegister_Ajax(result); 
         }else{
-            showModal("<div>よみこみにしっぱいしました</div><div>せんしゅQRコードではありません</div>");
+            showModal("<div>せんしゅQRコードではありません</div>");
         }
       }
 
@@ -153,7 +154,7 @@ $(function(){
      
 });
 </script>
-<form action="/ST_Register/Register/registername" id="QrreadForm" method="post" accept-charset="utf-8">
+<form action="<?php echo $this->Html->webroot?>Register/registername" id="QrreadForm" method="post" accept-charset="utf-8">
 <div id="camera">
     <video id="video" autoplay width="480" height="360"></video> 
     <canvas id="canvas" ></canvas>

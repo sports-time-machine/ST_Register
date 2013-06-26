@@ -1,13 +1,13 @@
 <script type="text/javascript">
 $(function(){
     $('#prev').click(function(){
-        location.href = '/ST_Register/Register/registername';
+        location.href = '<?php echo $this->Html->webroot?>Register/registername';
         return false;
     });
 });
 </script>
 <div class="clear">
-    <form action="/ST_Register/Register/oath" id="ConfirmForm" method="post" accept-charset="utf-8">
+    <form action="<?php echo $this->Html->webroot?>Register/oath" id="ConfirmForm" method="post" accept-charset="utf-8">
         <div>この「せんしゅめい」でよろしいですか？</div>
         <div>せんしゅID:<?php echo $register['player_id']; ?></div>
         <div id="disp_name">

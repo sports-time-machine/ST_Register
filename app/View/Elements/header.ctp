@@ -2,7 +2,7 @@
 <script type="text/javascript">
 $(function(){
     $('#home').click(function(){
-        location.href = '/ST_Register/';
+        location.href = '<?php echo $this->Html->webroot?>';
         return false;
     });
 });
