@@ -73,7 +73,6 @@ class DATABASE_CONFIG {
 		'host' => 'www4235ui.sakura.ne.jp',
 		'login' => 'st_register',
 		'password' => 'z1EJWIgvKxIzGIrX6Yxz',
-		'database' => 'st_register',
 		'database' => 'st_register_test',
 		'prefix' => '',
 		'port' => '3306',
