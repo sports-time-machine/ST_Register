@@ -1,5 +1,9 @@
 <script type="text/javascript">
 $(function(){
+    $('#decide').click(function(){
+        $('form').submit(); 
+    });
+    
     $('#noName').click(function(){
         $('#username').val(""); //記入なしに変更
         $('form').submit();        
@@ -14,7 +18,9 @@ $(function(){
                 <div>せんしゅめい(ほんみょう)を入力してください</div>
                 <?php echo $this->Form->text('username',array('label' => false, 'default' => $register['name'] , "maxlength" => $maxlength)); ?>
                 <?php echo $this->Form->hidden('player_id'); ?>
-                <?php echo $this->Form->submit('けってい',array('label' => false, 'class' => 'btn')); ?>    </div>
+                <div>
+                    <?php echo $this->Form->button('けってい',array('label' => false, 'class' => 'btn', 'id' => 'decide')); ?>    
+                </div>
         <div>
             <div>ここで「せんしゅめい」を入力しておくと</div>
             <div>お家のインターネットで自分の情報を見たり、変更したりできます</div>

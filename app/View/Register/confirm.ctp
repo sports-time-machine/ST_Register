@@ -1,5 +1,9 @@
 <script type="text/javascript">
 $(function(){
+    $('#decide').click(function(){
+        $('form').submit(); 
+    });
+    
     $('#prev').click(function(){
         location.href = '<?php echo $this->Html->webroot?>Register/registername';
         return false;
@@ -15,8 +19,12 @@ $(function(){
                 <?php echo $disp_name; ?>
             </p>
         </div>
-        <?php echo $this->Form->submit('けってい',array('label' => false, 'class' => 'btn')); ?>
-        <?php echo $this->Form->button('やりなおし',array('label' => false, 'class' => 'btn', 'id' => 'prev')); ?>
+        <div>
+            <?php echo $this->Form->button('けってい',array('label' => false, 'class' => 'btn', 'id' => 'decide')); ?>
+        </div>
+        <div>
+            <?php echo $this->Form->button('やりなおし',array('label' => false, 'class' => 'btn', 'id' => 'prev')); ?>
+        </div>
     </form>
 </div>
 <div>

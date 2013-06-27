@@ -1,6 +1,6 @@
 <!-- Header -->
 <script type="text/javascript">
-$(function(){
+$(function(){ 
     $('#home').click(function(){
         location.href = '<?php echo $this->Html->webroot?>';
         return false;

@@ -5,14 +5,13 @@ body {
     background: #f47321;
     padding: 16px;
     margin: 0 auto;
-    
     text-align: center;
 }
 
 #header {
     font-size: 50px;
-    margin: 32px;
-    height: 110px;
+    margin: 16px;
+    height: 120px;
 }
 
 #header div{
@@ -20,7 +19,7 @@ body {
 }
 
 #content {
-    font-size: 30px;
+    font-size: 28px;
 }
 #content div{
     padding: 12px;
@@ -47,9 +46,13 @@ input { border: 0; }
 }
 
 .btn {
-    font-size: 40px;
+    font-size: 35px;
+    width:250px;
+    height:50px;
+}
+
+.w350{
     width:350px;
-    height:60px;
 }
 
 #camera{
@@ -76,7 +79,7 @@ input { border: 0; }
 #disp_name{
     height: 60px;
     background: #ffffff;
-    color: #000000;
+    color: #555555;
     font-size: 35px;
     margin: 30px;
     top: 50%;

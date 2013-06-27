@@ -17,8 +17,8 @@ echo $this -> Html -> script( 'webcam/findpat', array( 'inline' => false ) );
 echo $this -> Html -> script( 'webcam/alignpat', array( 'inline' => false ) );
 echo $this -> Html -> script( 'webcam/databr', array( 'inline' => false ) );
 ?>
+
 <script type="text/javascript">
-    
 //読み込まれたQRコードが既に選手登録済み、もしくは、予め登録されていないQRコードかチェック
 function checkPlayerRegister_Ajax(code){
     var url = "<?php echo $this->Html->webroot . 'register/check'; ?>";
@@ -166,6 +166,12 @@ $(function(){
 <div class="modal hide fade" id="errorModal">
     <div class="error modal-body" id="result"></div>
 </div>
-<?php echo $this->Form->button('よみこみ',array('type' => 'button', 'div' => false, 'id' => 'read', 'class' => 'btn')) ?>
-<?php echo $this->Form->hidden('player_id'); ?>
+<div>
+    <?php echo $this->Form->button('よみこみ',array('type' => 'button', 'div' => false, 'id' => 'read', 'class' => 'btn')) ?>
+    <?php echo $this->Form->hidden('player_id'); ?>
+</div>
+<div>
+    <div>QRコードがよみこめないときはこちら</div>
+    <?php echo $this->Form->button('コードでとうろく',array('type' => 'button', 'div' => false, 'id' => 'input_code', 'class' => 'btn')) ?>
+</div>
 </form>
