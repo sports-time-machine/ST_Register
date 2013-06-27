@@ -151,6 +151,10 @@ $(function(){
         $('#info').html("<div>せんしゅカードのQRコードをうつして</div><div>「よみこみ」ボタンを押してください</div>");  
     });
     
+    $("#to_input").click(function(){
+        location.href = "<?php echo $this->Html->webroot?>Register/input_code"; 
+    });
+    
      
 });
 </script>
@@ -172,6 +176,6 @@ $(function(){
 </div>
 <div>
     <div>QRコードがよみこめないときはこちら</div>
-    <?php echo $this->Form->button('コードでとうろく',array('type' => 'button', 'div' => false, 'id' => 'input_code', 'class' => 'btn')) ?>
+    <?php echo $this->Form->button('コードでとうろく',array('type' => 'button', 'div' => false, 'id' => 'to_input', 'class' => 'btn')) ?>
 </div>
 </form>

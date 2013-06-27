@@ -26,6 +26,11 @@ class RegisterController extends AppController {
         $this->Session->delete('Register');
     }
     
+    //キーボードから入力
+    function input_code() {
+        
+    }
+    
     //選手名登録
     function registername() {
                 
@@ -136,6 +141,45 @@ class RegisterController extends AppController {
            
             //最初のプレフィックスを無視
             $this->request->data['code'] = substr($this->request->data['code'], 1);
+            
+            //DBから検索
+            $user = $this->User->findByPlayerId($this->request->data['code']);   
+
+            if ($user == false){
+                //データが見つからなかった
+                echo "NoData";
+                return;
+            }else{
+                            
+                $count = $this->Name->find('count', array( 'conditions' => array( "user_id" => $user['User']['id'])));
+                
+                //対象ユーザIDが無かったら未登録と判定
+                if ($count == 0){
+                    //未登録
+                    echo "OK";
+                    return;
+                }else{
+                    //すでに選手登録済み
+                    echo "Registered";
+                    return;            
+                }
+            }
+        }
+    }
+    
+    //選手コード(入力)チェック
+    function check_input() {
+        if ($this->request->is('ajax')) {
+            
+            $this->autoRender = false;
+            // POSTデータがなかったらNG
+            if (empty($this->request->data)){
+                echo "NG";
+                return;
+            }
+           
+            //8文字まで0を詰める
+            $this->request->data['code'] = sprintf("%08s",$this->request->data['code']);
             
             //DBから検索
             $user = $this->User->findByPlayerId($this->request->data['code']);   

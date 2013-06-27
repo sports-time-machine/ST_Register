@@ -76,6 +76,12 @@ input { border: 0; }
     height: 60px;
 }
 
+#input_code {
+    font-size: 50px;
+    width: 350px;
+    height: 60px;
+}
+
 #disp_name{
     height: 60px;
     background: #ffffff;
