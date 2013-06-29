@@ -80,14 +80,11 @@ $(function(){
 
     navigator.getUserMedia({video: true},
         function(stream) {
-            //ST_RegisterはOperaでブラウズする。
-            //カメラを常に許可できるため。
-            //Operaのみ対応
-            //video.srcがstreamで受け取るブラウザと
-            //navigator.getUserMedia(stream)で受け取るブラウザ
-            //にわかれている。。。
-   
-            video.src = stream; 
+            if(navigator.userAgent.indexOf("Opera") != -1){
+                video.src = stream; //Operaは直接streamを流し込む
+            }else{
+                video.src = window.URL.createObjectURL(stream);
+            } 
             localMediaStream = stream;
         },
         function(err){
