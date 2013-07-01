@@ -91,6 +91,8 @@ class RegisterController extends AppController {
         if ($this->Session->check('Register') == false){
             $this->redirect(array('action' => 'qrread'));
         }
+        
+        $this->set('register',$this->Session->read('Register'));  
     }
     
     //選手追加

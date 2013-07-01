@@ -36,6 +36,9 @@ function showModal(mes){
   
 $(function(){
     
+    $('#read').removeAttr('disabled');
+    $('#info').html("<div>せんしゅカードに書いてあるコードを書いて</div><div>「よみこみ」ボタンを押してください</div>");  
+    
     //ボタンイベント
     $("#read").click(function() {
         $("#read").attr('disabled', true);

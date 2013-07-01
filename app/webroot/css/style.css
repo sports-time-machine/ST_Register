@@ -41,6 +41,10 @@ input { border: 0; }
 .right, .alignright { float: right; display: inline; }
 .clear {clear: both;}
 
+.text-left {text-align: left;}
+.text-right {text-align: right;}
+.text-center {text-align: center;}
+
 .error {
     font-size: 25px;
     color: #ff0033;
@@ -98,4 +102,13 @@ input { border: 0; }
 
 #home{
     font-size: 20px;
+}
+
+#outh_str{
+    height: 250px;
+    background: #ffffff;
+    color: #555555;
+    font-size: 35px;
+    margin: 30px;
+    top: 50%;
 }
