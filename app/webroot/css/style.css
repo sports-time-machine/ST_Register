@@ -94,6 +94,9 @@ input { border: 0; }
     font-size: 35px;
     margin: 30px;
     top: 50%;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px; 
 }
 
 #disp_name p{
@@ -105,10 +108,13 @@ input { border: 0; }
 }
 
 #outh_str{
-    height: 250px;
+    height: 220px;
     background: #ffffff;
     color: #555555;
     font-size: 35px;
     margin: 30px;
     top: 50%;
+  	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px; 
 }
