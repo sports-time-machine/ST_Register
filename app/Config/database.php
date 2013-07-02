@@ -55,7 +55,19 @@
  */
 class DATABASE_CONFIG {
 
-	public $default = array(
+	public $production = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' => 'ST_SERVER',
+		'login' => 'st_user',
+		'password' => 'eureka',
+		'database' => 'st',
+		'prefix' => '',
+		'port' => '3306',
+		'encoding' => 'utf8',
+	);
+
+	public $development = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'www4235ui.sakura.ne.jp',
@@ -78,4 +90,12 @@ class DATABASE_CONFIG {
 		'port' => '3306',
 		'encoding' => 'utf8',
 	);
+	
+	public function __construct() {
+		if (PRODUCTION) {
+			$this->default = $this->production;
+		} else {
+			$this->default = $this->development;
+		}
+	}
 }

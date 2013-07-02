@@ -118,3 +118,12 @@ App::import('Vendor', 'PHPUnit', array('file' => 'PHPUnit.php')); // pear_local 
 
 // for Debug Kit
 CakePlugin::load('DebugKit');
+
+// 本番環境の判定
+if (strtoupper($_SERVER['SERVER_NAME']) == 'ST_SERVER') {
+	define('PRODUCTION', true);
+	Configure::write('debug', 0); // debug = 0 にする
+} else {
+	define('PRODUCTION', false);
+}
+//var_dump(PRODUCTION);
