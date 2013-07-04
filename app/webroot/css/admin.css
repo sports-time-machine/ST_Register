@@ -1,0 +1,21 @@
+#contents {
+	margin: 0px 16px;
+}
+#footer {
+	margin: 0px 16px;
+}
+
+div.search_form {
+	background-color: #f0f0f0;
+}
+/* bootstrap の上書き */
+.table-striped tbody tr:nth-child(odd) td,
+.table-striped tbody tr:nth-child(odd) th {
+	background-color: #f0f0f0;
+}
+
+/* admin */
+h2 {
+	font-size: 14pt;
+	border-bottom: 1px solid gray;
+}

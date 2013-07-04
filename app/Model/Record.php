@@ -11,11 +11,36 @@ class Record extends AppModel
 	public $column_list = array();
 	public $validate = array();
 	
-	public $hasMany = array(
-		'RecordImage' => array(
-			'className' => 'RecordImage',
-			'fields' => array('record_id', 'image_id'),
-			//'order' => 'RecordImage.no',
-		)
-	);
+	// view用bind
+	public function bindForView() {
+		// Imageを読み込むため recursive = 2
+		$this->recursive = 2;
+		
+		$bind = array(
+			'hasMany' => array(
+				'RecordImage' => array(
+					'className' => 'RecordImage',
+					'fields' => array('record_id', 'image_id'),
+					//'order' => 'RecordImage.no',
+				),
+				'Partner' => array(
+					'className' => 'Partner',
+					'fields' => array('record_id', 'partner_id'),
+				),
+			),
+		);
+		$this->bindModel($bind, false);
+	}
+	public function unbindForView() {
+		// Imageを読み込むため recursive = 2
+		$this->recursive = -1;
+		
+		$bind = array(
+			'hasMany' => array(
+				'RecordImage',
+				'Partner',
+			),
+		);
+		$this->unbindModel($bind, false);
+	}
 }
