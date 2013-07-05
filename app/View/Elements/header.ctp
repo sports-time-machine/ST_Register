@@ -8,8 +8,10 @@ $(function(){
 });
 </script>
 <div id="header">
+    <?php if ($this->action != 'qrread') : ?>
     <a href="#" id="home" class="left">最初の画面へ</a>
     <br>
+    <?php endif; ?>
     <div>
         せんしゅとうろくマシン
     </div>
