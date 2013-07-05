@@ -90,6 +90,18 @@ class DATABASE_CONFIG {
 		'port' => '3306',
 		'encoding' => 'utf8',
 	);
+
+	public $remote = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' => 'www4235ui.sakura.ne.jp',
+		'login' => 'st_player',
+		'password' => 'z1EJWIgvKxIzGIrX6Yxz',
+		'database' => 'st_player',
+		'prefix' => '',
+		'port' => '3306',
+		'encoding' => 'utf8',
+	);
 	
 	public function __construct() {
 		if (PRODUCTION) {

@@ -83,6 +83,59 @@ class Stm extends AppModel
 	
 	
 	// ------------------------------------------------------------
+	// 記録の呼び出し
+	// ------------------------------------------------------------
+	public function record($record_id) {
+		$this->loadModel(array('User', 'Record', 'RecordImage', 'Partner', 'Image'));
+		
+		// image呼び出し用
+		$this->Record->bindForView();
+		$r = $this->Record->findByRecord_id($record_id);
+		if (empty($r)) {
+			return array();
+		}
+		//pr($r);
+		$u = $this->User->findById($r['Record']['user_id']);
+		
+		// 画像関係
+		$path = $this->generateImagePathFromPlayerId($u['User']['player_id']);
+		$fullPath = $this->IMAGE_DIR . DS . $path;
+		
+		// 整形
+		$data = array(
+			'User' => $u['User'],
+			'Record' => $r['Record'],
+			'Partner' => array(),
+			'Image' => array(),
+		);
+		foreach ($r['Partner'] as $k => $v) {
+			$data['Partner'][] = array('partner_id' => $v['partner_id']);
+		}
+		foreach ($r['RecordImage'] as $k => $v) {
+			$file = $fullPath . DS . $v['Image']['filename'] . '.' . $v['Image']['ext'];
+			if (file_exists($file)) {
+				$image = base64_encode(file_get_contents($file));
+			} else {
+				$image = null;
+			}
+			
+			$data['Image'][] = array(
+				'filename' => $v['Image']['filename'],
+				'ext'      => $v['Image']['ext'],
+				'mime'     => $v['Image']['mime'],
+				'size'     => $v['Image']['size'],
+				'width'    => $v['Image']['width'],
+				'height'   => $v['Image']['height'],
+				'data'     => $image,
+				);
+			
+		}
+		//pr($data);
+		
+		return $data;
+	}
+	
+	// ------------------------------------------------------------
 	// 記録の登録
 	// ------------------------------------------------------------
 	// 走った記録データのチェック
@@ -223,17 +276,23 @@ class Stm extends AppModel
 
 	// 各プレイヤーの画像ディレクトリのパスを生成
 	// ABCD → D\C\B\A
-	public function generateImagePathFromPlayerId($record_id) {
+	public function generateImagePathFromPlayerId($player_id) {
 		// 正規化
 		// TODO あとで共通化
-		$record_id = strtoupper($record_id);
+		$player_id = $this->generateShortPlayerId($player_id);
 		
 		// 逆から1文字ずつフォルダ階層にする
-		$char_array = str_split(strrev($record_id));
+		$char_array = str_split(strrev($player_id));
 		$path = implode(DS, $char_array);
 		return $path;
 	}
 	
-	
+	public function generateShortPlayerId($player_id) {
+		$player_id = strtoupper($player_id);
+		$player_id = ltrim($player_id, 'P0');
+		$player_id = ltrim($player_id, '0');
+		
+		return $player_id;
+	}
 	
 }

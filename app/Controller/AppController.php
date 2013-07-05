@@ -33,8 +33,8 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
     public $components = array(
+		'Session' => array('className' => 'MySession'), // className‚ğ•ÏX‚·‚é‚à‚Ì‚Íæ‚É“Ç‚İ‚Ş
         'DebugKit.Toolbar',
-        'Session'
     );
   
 }
