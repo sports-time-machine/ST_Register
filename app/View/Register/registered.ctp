@@ -9,7 +9,7 @@ $(function(){
 <div class="clear">
     <div>せんしゅとしてとうろくされました！</div>
     <div>あなたのせんしゅページは</div>
-    <div>http://sptmy.net/<?php echo $player_id ?></div>
+    <div>http://www.sptmy.net/p/<?php echo $player_id ?></div>
     <div>です</div>
     </div>
     <div>
