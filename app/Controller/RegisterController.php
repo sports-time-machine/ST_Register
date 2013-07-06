@@ -66,7 +66,7 @@ class RegisterController extends AppController {
                $this->redirect(array('action' => 'qrread'));
            }
           
-           $username = mb_convert_kana($username, "s"); //全角スペースを半角スペースに変換
+           $username = mb_convert_kana($username, "as"); //全角英数字スペースを半角英数字スペースに変換
            $username = trim($username);    //前後の半角スペースを削除
            
 
