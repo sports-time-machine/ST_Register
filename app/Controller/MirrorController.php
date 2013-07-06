@@ -26,14 +26,11 @@ class MirrorController extends AppController {
 		}
 		
 		
-		// リモートの記録情報を取得
-		$timestamp = $this->Mirror->getLastRemoteRecordTimestamp();
-		
 		// ローカルの記録情報を検索
-		$record_data = $this->Mirror->getRecordForRemoteUpdate($timestamp);
+		$record_data = $this->Mirror->getRecordForRemoteUpdate();
 		//pr($record_data);
 		if (!empty($record_data)) {
-			$record_lastupdate_time = date('Y-m-d H:i:s', strtotime($timestamp));
+			$record_lastupdate_time = date('Y-m-d H:i:s', strtotime($record_data[0]['records']['register_date']));
 			$record_update_num = count($record_data);
 		} else {
 			$record_lastupdate_time = null;
@@ -128,6 +125,10 @@ class MirrorController extends AppController {
 				$result = json_decode($result_json, true);
 				if ($result['code'] == 200) {
 					$record_success_count++;
+					// 成功したら同期フラグを立てる
+					$r = $this->Record->findByRecord_id($v['records']['record_id']);
+					$r['Record']['is_synced'] = 1;
+					$this->Record->save($r, false, array('is_synced'));
 				}
 				//pr($result);
 				break;

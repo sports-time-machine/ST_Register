@@ -32,25 +32,9 @@ class Mirror extends AppModel
 		return $data;
 	}
 	
-	// リモートの最終記録データを取得
-	public function getLastRemoteRecordTimestamp() {
-		$sql = "SELECT * FROM records ORDER BY register_date DESC LIMIT 1";
-		$r = $this->Remote->query($sql);
-		if (!empty($r)) {
-			$timestamp = $r[0]['records']['register_date'];
-		} else {
-			$timestamp = '2013-07-05 00:00:00'; // 7月5日以降のデータを同期対象にする
-		}
-		
-		return $timestamp;
-	}
-	
 	// リモートに同期する記録データを取得
-	public function getRecordForRemoteUpdate($timestamp = null) {
-		if (is_null($timestamp)) {
-			$timestamp = $this->getLastRemoteRecordTimestamp();
-		}
-		$sql = "SELECT * FROM records WHERE '{$timestamp}' < register_date ORDER BY register_date DESC";
+	public function getRecordForRemoteUpdate() {
+		$sql = "SELECT * FROM records WHERE player_id IS NOT NULL AND is_synced = 0 ORDER BY register_date";
 		$data = $this->Stm->query($sql);
 		
 		return $data;
