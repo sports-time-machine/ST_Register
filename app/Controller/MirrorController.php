@@ -131,7 +131,6 @@ class MirrorController extends AppController {
 					$this->Record->save($r, false, array('is_synced'));
 				}
 				//pr($result);
-				break;
 			}
 			//pr($record_success_count);
 		}
