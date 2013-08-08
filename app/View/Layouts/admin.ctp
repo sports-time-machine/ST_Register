@@ -69,7 +69,8 @@ $(function(){
 			<div class="navbar-inner">
 				<a class="brand" href="#" onclick="return false;">選手登録管理画面</a>
 				<ul class="nav">
-					<li class="users"><a href="<?php echo $this->Html->url("/mirror/index"); ?>">同期</a></li>
+					<li class="users"><a href="<?php echo $this->Html->url("/mirror/index"); ?>">選手と記録</a></li>
+					<li class=""><a href="<?php echo $this->Html->url("/upload/index"); ?>">画像とオブジェクト</a></li>
 					<!--
 					<li class="search"><a href="<?php echo $this->Html->url("/logs/search"); ?>">ログ</a></li>
 					-->
