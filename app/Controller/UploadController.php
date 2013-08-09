@@ -30,7 +30,7 @@ class UploadController extends AppController {
 		// タイムアウトを無制限にする
 		set_time_limit(0);
 		// メモリリミットを増やす
-		ini_set('memory_limit', '1024M');
+		ini_set('memory_limit', '2048M');
 		
 		echo '<html><head><meta charset="UTF-8"></head><body>';
 		
