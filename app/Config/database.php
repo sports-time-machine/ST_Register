@@ -94,7 +94,7 @@ class DATABASE_CONFIG {
 	public $remote = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => 'www4235ui.sakura.ne.jp',
+		'host' => '210.129.198.1', /* www4235ui.sakura.ne.jp */
 		'login' => 'st_player',
 		'password' => 'z1EJWIgvKxIzGIrX6Yxz',
 		'database' => 'st_player',

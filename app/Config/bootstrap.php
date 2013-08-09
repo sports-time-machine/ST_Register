@@ -128,7 +128,7 @@ if (strtoupper($_SERVER['SERVER_NAME']) == 'ST_SERVER') {
 }
 
 // 同期先API
-define('MIRROR_API_URL', 'http://sptmy.net/api/');
+define('MIRROR_API_URL', 'http://210.129.198.1/api/');
 //var_dump(PRODUCTION);
 
 
