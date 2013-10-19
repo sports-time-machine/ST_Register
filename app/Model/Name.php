@@ -8,13 +8,24 @@ class Name extends AppModel
 	public $primaryKey = 'id';
 
     public $validate = array(
-        /*
         'username' => array(
             'maxLength' => array(
                 'rule' => array('maxLength',255),
-                'message' => '選手名は255文字以下にしてください'
+                'message' => 'せんしゅ名は255文字以下にしてください'
              ),
-         ),*/
+         ),
+         'gender' => array(
+            'notEmpty' => array(
+                'rule' => 'notEmpty',
+                'message' => 'どれかひとつ選んでください'
+             ),
+         ),
+         'age' => array(
+            'notEmpty' => array(
+                'rule' => 'notEmpty',
+                'message' => 'どれかひとつ選んでください'
+             ),
+         ),
     );
  
 }

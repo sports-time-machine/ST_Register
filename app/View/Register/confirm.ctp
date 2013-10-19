@@ -12,19 +12,31 @@ $(function(){
 </script>
 <div class="clear">
     <form action="<?php echo $this->Html->webroot?>Register/oath" id="ConfirmForm" method="post" accept-charset="utf-8">
-        <div>この「せんしゅめい」でよろしいですか？</div>
+        <div>これでよろしいですか？</div>
         <div>せんしゅID:<?php echo $register['player_id']; ?></div>
+        <br />
+        せんしゅ名
         <div id="disp_name">
             <p>
-                <?php echo $disp_name; ?>
+                <?php echo $register['name']; ?>
             </p>
         </div>
-        <div>
-            <?php echo $this->Form->button('けってい',array('label' => false, 'class' => 'btn', 'id' => 'decide')); ?>
+        せいべつ
+        <div id="disp_name">
+            <p>
+                <?php echo $disp_gender; ?>
+            </p>
         </div>
-        <div>
-            <?php echo $this->Form->button('やりなおし',array('label' => false, 'class' => 'btn', 'id' => 'prev')); ?>
+        ねんれい
+        <div id="disp_name">
+            <p>
+                <?php echo $disp_age; ?>
+            </p>
         </div>
+
+        <?php echo $this->Form->button('やりなおし',array('label' => false, 'class' => 'btn', 'id' => 'prev')); ?>        
+        <?php echo $this->Form->button('けってい',array('label' => false, 'class' => 'btn', 'id' => 'decide')); ?>
+       
     </form>
 </div>
 <div>

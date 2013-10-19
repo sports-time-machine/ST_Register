@@ -46,6 +46,18 @@ $(function(){
         checkPlayerRegister_Ajax(result.toUpperCase()); 
     });
     
+    //バブリングの抑制
+    $("#input_code").keypress(function(e){
+        if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
+			$("#read").attr('disabled', true);
+            var result = $('#input_code').val();
+            checkPlayerRegister_Ajax(result.toUpperCase());      
+            return false;
+		} else {   
+			return true;
+		} 
+    });
+    
     //読み込みボタンの復活
     $("#errorModal").on('hidden',function(){
         $('#read').removeAttr('disabled');
