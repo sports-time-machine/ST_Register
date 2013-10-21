@@ -8,9 +8,8 @@ $(function(){
 });
 </script>
 <div id="header">
-    <?php if ($this->action != 'qrread') : ?>
-    <a href="#" id="home" class="left">最初の画面へ</a>
-    <br>
+    <?php if ($this->action != 'qrread' && $this->action != 'registered') : ?>
+    <a href="#" id="home">最初の画面へ</a>
     <?php endif; ?>
     <div>
         せんしゅとうろくマシン

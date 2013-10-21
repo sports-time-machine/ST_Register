@@ -67,12 +67,9 @@ $(function(){
 });
 </script>
 <form action="<?php echo $this->Html->webroot?>Register/registername" id="InputCodeForm" method="post" accept-charset="utf-8">
-<div id="info">
+<div class="info">
     <div>せんしゅカードに書いてあるコードを書いて</div>
     <div>「よみこみ」ボタンを押してください</div>
-</div>
-<div class="modal hide fade" id="errorModal">
-    <div class="error modal-body" id="result"></div>
 </div>
 <div>
     <div>
@@ -82,5 +79,8 @@ $(function(){
         <?php echo $this->Form->button('よみこみ',array('type' => 'button', 'div' => false, 'id' => 'read', 'class' => 'btn')) ?>
     </div>
     <?php echo $this->Form->hidden('player_id'); ?>
+</div>
+<div class="modal hide fade" id="errorModal">
+    <div class="error modal-body" id="result"></div>
 </div>
 </form>

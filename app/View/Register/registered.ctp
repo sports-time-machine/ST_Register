@@ -7,10 +7,11 @@ $(function(){
 });
 </script>
 <div class="clear">
-    <div>せんしゅとしてとうろくされました！</div>
-    <div>あなたのせんしゅページは</div>
-    <div>http://www.sptmy.net/p/<?php echo $player_id ?></div>
-    <div>です</div>
+    <div class="info">
+        せんしゅとしてとうろくされました！<br />
+        あなたのせんしゅページは<br />
+        http://www.sptmy.net/p/<?php echo $player_id ?><br />
+        です
     </div>
     <div>
         <?php echo $this->Form->button('わかりました',array('label' => false, 'class' => 'btn', 'id' => 'first')); ?>    
