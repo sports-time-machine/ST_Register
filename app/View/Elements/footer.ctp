@@ -2,16 +2,27 @@
 <?php if ($this->action == 'qrread' || $this->action == 'input_code') : ?>
 <script type="text/javascript">
 $(function(){
+    $("#content,#header").mouseover(function(){ 
+        $("div.sptmy > div.link").css("text-decoration", "none");
+        $("div.sptmy > div.info").css("text-decoration", "none");
+        $("div.share > div.link").css("text-decoration", "none");
+        $("div.share > div.info").css("text-decoration", "none");   
+    });
+    
     $("div.sptmy").hover( 
         function () {
             $("div.sptmy").css("cursor", "pointer");
             $("div.sptmy > div.link").css("text-decoration", "underline");
             $("div.sptmy > div.info").css("text-decoration", "underline");
+            
+            $("div.share > div.link").css("text-decoration", "none");
+            $("div.share > div.info").css("text-decoration", "none");            
         },
         function () {
             $("div.sptmy").css("cursor", "pointer");
             $("div.sptmy > div.link").css("text-decoration", "none");
             $("div.sptmy > div.info").css("text-decoration", "none");
+            
         }
     );
     $("div.sptmy").click(function(){
@@ -24,6 +35,9 @@ $(function(){
             $("div.share").css("cursor", "pointer");
             $("div.share > div.link").css("text-decoration", "underline");
             $("div.share > div.info").css("text-decoration", "underline");
+            
+            $("div.sptmy > div.link").css("text-decoration", "none");
+            $("div.sptmy > div.info").css("text-decoration", "none");            
         },
         function () {
             $("div.share").css("cursor", "pointer");
