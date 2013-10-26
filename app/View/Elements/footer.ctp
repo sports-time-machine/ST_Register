@@ -1,9 +1,47 @@
 <!-- Footer -->
 <?php if ($this->action == 'qrread' || $this->action == 'input_code') : ?>
+<script type="text/javascript">
+$(function(){
+    $("div.sptmy").hover( 
+        function () {
+            $("div.sptmy").css("cursor", "pointer");
+            $("div.sptmy > div.link").css("text-decoration", "underline");
+            $("div.sptmy > div.info").css("text-decoration", "underline");
+        },
+        function () {
+            $("div.sptmy").css("cursor", "pointer");
+            $("div.sptmy > div.link").css("text-decoration", "none");
+            $("div.sptmy > div.info").css("text-decoration", "none");
+        }
+    );
+    $("div.sptmy").click(function(){
+        window.location="http://sptmy.net/";
+        return false;
+    });
+   
+    $("div.share").hover( 
+        function () {
+            $("div.share").css("cursor", "pointer");
+            $("div.share > div.link").css("text-decoration", "underline");
+            $("div.share > div.info").css("text-decoration", "underline");
+        },
+        function () {
+            $("div.share").css("cursor", "pointer");
+            $("div.share > div.link").css("text-decoration", "none");
+            $("div.share > div.info").css("text-decoration", "none");
+        }
+    );
+        
+    $("div.share").click(function(){
+        return false;
+    });
+});
+</script>
+
 <div class="sptmy">
     <div class="link">
         <?php echo $this->Html->image('arrow-0.gif'); ?>
-        <a href="http://sptmy.net">SPTMせんしゅWEBサイトへ</a>
+        <span>SPTMせんしゅWEBサイトへ</span>
     </div>
     <div class="info">
         いっしょに走りたいデータを探せます。<br />

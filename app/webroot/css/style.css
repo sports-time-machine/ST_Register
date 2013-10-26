@@ -51,6 +51,7 @@ div.info {
     background: #199bc6;
     padding: 12px 0px;
     width: 50%;
+    height: 165px;
     clear: both; 
     float:left;
 }
@@ -66,6 +67,7 @@ div.info {
     background: #4db332;
     padding: 12px 0px;
     width: 50%;
+    height: 165px;
 }
 
 #footer div.share div.info {
