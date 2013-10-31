@@ -69,6 +69,8 @@ class MirrorController extends AppController {
 				$a = array();
 				$a['User']['player_id'] = $this->Stm->generateShortPlayerId($v['users']['player_id']);
 				$a['User']['username' ] = $v['names']['username'];
+				$a['Profile']['gender' ] = $v['names']['gender'];
+				$a['Profile']['age' ]   = $v['names']['age'];
 				//pr($a);
 				$json = json_encode($a);
 				
@@ -88,7 +90,7 @@ class MirrorController extends AppController {
 					// 成功したら同期フラグを立てる
 					$r = $this->User->findByPlayer_id($v['users']['player_id']);
 					$r['User']['is_synced'] = 1;
-					$this->User->save($r, false, array('is_synced'));
+					$this->User->save($r, false);
 				}
 				//pr($result);
 			}

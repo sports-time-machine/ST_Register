@@ -17,7 +17,7 @@ class Mirror extends AppModel
 	// リモートに同期する選手データを取得
 	public function getUserForRemoteUpdate() {
 		$sql = "SELECT
-					users.player_id, users.is_synced, names.username, names.created
+					users.player_id, users.is_synced, names.username, names.gender, names.age, names.created
 				FROM
 					names
 				LEFT JOIN
