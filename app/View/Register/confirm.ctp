@@ -13,27 +13,28 @@ $(function(){
 <div class="clear">
     <form action="<?php echo $this->Html->webroot?>Register/oath" id="ConfirmForm" method="post" accept-charset="utf-8">
         <div>これでよろしいですか？</div>
+        <br />
         <div>せんしゅID:<?php echo $register['player_id']; ?></div>
         <br />
-        せんしゅ名
-        <div id="disp_name">
-            <p>
+        <div class="input_disp">
+            せんしゅ名
+            <div class="detail">
                 <?php echo $register['name']; ?>
-            </p>
+            </div>
         </div>
-        せいべつ
-        <div id="disp_name">
-            <p>
+        <div class="input_disp">
+            せいべつ
+            <div class="detail">
                 <?php echo $disp_gender; ?>
-            </p>
+            </div>
         </div>
-        ねんれい
-        <div id="disp_name">
-            <p>
+        <div class="input_disp">
+            ねんれい
+            <div class="detail">
                 <?php echo $disp_age; ?>
-            </p>
+            </div>
         </div>
-
+        <br />
         <?php echo $this->Form->button('やりなおし',array('label' => false, 'class' => 'btn', 'id' => 'prev')); ?>        
         <?php echo $this->Form->button('けってい',array('label' => false, 'class' => 'btn', 'id' => 'decide')); ?>
        

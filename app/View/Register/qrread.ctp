@@ -156,23 +156,29 @@ $(function(){
 });
 </script>
 <form action="<?php echo $this->Html->webroot?>Register/registername" id="QrreadForm" method="post" accept-charset="utf-8">
-<div id="camera">
-    <video id="video" autoplay width="480" height="360"></video> 
-    <canvas id="canvas" ></canvas>
-</div>
-<div id="info">
-    <div>せんしゅカードのQRコードをうつして</div>
-    <div>「よみこみ」ボタンを押してください</div>
-</div>
-<div class="modal hide fade" id="errorModal">
-    <div class="error modal-body" id="result"></div>
-</div>
-<div>
-    <?php echo $this->Form->button('よみこみ',array('type' => 'button', 'div' => false, 'id' => 'read', 'class' => 'btn')) ?>
-    <?php echo $this->Form->hidden('player_id'); ?>
-</div>
-<div>
-    <div>QRコードがよみこめないときはこちら</div>
-    <?php echo $this->Form->button('コードでとうろく',array('type' => 'button', 'div' => false, 'id' => 'to_input', 'class' => 'btn')) ?>
+
+<div class="cameraLogin">
+    <div class="camera">
+        <video id="video" autoplay width="480" height="360"></video> 
+        <canvas id="canvas" ></canvas>
+    </div>
+    <div>
+        <div class="info">
+            せんしゅカードのQRコードをうつして<br />
+            「よみこみ」ボタンを押してください
+        </div>
+        <div class="info">
+            <?php echo $this->Form->button('よみこみ',array('type' => 'button', 'div' => false, 'id' => 'read', 'class' => 'btn')) ?>
+            <?php echo $this->Form->hidden('player_id'); ?>
+        </div>
+    </div>
+
+    <div class="inputLogin">
+        <div><a href="<?php echo $this->Html->webroot?>Register/input_code">QRコードがよみこめないときはこちら</a></div>
+    </div>
 </div>
 </form>
+    
+<div class="modal hide fade" id="errorModal">
+    <div class="error modal-body" id="result"></div>
+</div>    

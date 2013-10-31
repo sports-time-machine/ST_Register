@@ -28,7 +28,7 @@
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
-		echo $this->Html-> script( 'jquery-1.9.1.min', array( 'inline' => false ) );
+		echo $this->Html->script( 'jquery-1.9.1.min', array( 'inline' => false ) );
    		echo $this->Html->script('bootstrap.min', array('inline' => false));
 		echo $this->Html->css('bootstrap.min');
         echo $this->Html->css('style');
@@ -38,11 +38,16 @@
 	?>
 </head>
 <body>
-    <div id="header">
-        <?php echo $this->element('header'); ?>
-    </div>
-    <div id="content" class="clear">
-        <?php echo $this->fetch('content'); ?>
+    <div style="width:100%;">
+        <div id="header">
+            <?php echo $this->element('header'); ?>
+        </div>
+        <div id="content" class="clear">
+            <?php echo $this->fetch('content'); ?>
+        </div>
+        <div id="footer" class="clear">
+            <?php echo $this->element('footer'); ?>
+        </div>   
     </div>
 </body>
 </html>

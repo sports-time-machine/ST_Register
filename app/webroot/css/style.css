@@ -3,38 +3,79 @@
 body {
     color: #ffffff;
     background: #f47321;
-    padding: 16px;
+    padding: 0px;
     margin: 0 auto;
     text-align: center;
     font-family: "ヒラギノ角ゴ6","メイリオ", "ＭＳ Ｐゴシック", sans-serif;
 }
 
+div.info {
+    margin: 0 auto;
+    padding: 8px 0px;  
+}
+
+div.sptmy {
+    color: #ffffff;
+    background: #199bc6;
+    padding: 12px 0px;
+}
+
+div.sptmy div.link {
+    padding: 8px 0px;
+}
+
+div.sptmy div.info {
+    border: solid 1px #ffffff;
+    background: #5fa6db;
+    width: 90%;
+}
+
+div.share {
+    color: #ffffff;
+    background: #4db332;
+    padding: 12px 0px;
+}
+
+div.share div.link {
+    padding: 8px 0px;
+}
+
+
+div.share div.info {
+    border: solid 1px #ffffff;
+    background: #6db92b;
+    width: 90%;
+}
+
 #header {
     font-size: 50px;
-    margin: 16px;
-    height: 120px;
+    margin: 40px 0px 25px 0px;
+    height: 155px;
+    line-height: 52px;
 }
 
 #header div{
     padding: 8px;
 }
 
-#content {
+#content{
     font-size: 28px;
-}
-#content div{
-    padding: 12px;
+    line-height: 32px;
 }
 
-#info{
-    height: 75px;
+#footer {
+    padding: 25px 0px 0px 0px;
+    font-size: 28px;
+    line-height: 32px;  
 }
 
-a { color: #0252aa; text-decoration: none; cursor:pointer; }
-a:hover { text-decoration: underline; }
+a { color: #ffffff; cursor:pointer; text-decoration: underline;}
+a:hover { text-decoration: underline; color: #ffffff; }
+a:visited {color: #ffffff;}
+a:active {color: #ffffff;}
 a img { border: 0; }
 
-input, textarea, select { font-size: 30px; }
+input, textarea, select { font-size: 30px; margin: 8px 0px;}
 input { border: 0; }
 
 .left, .alignleft { float: left; display: inline; }
@@ -47,6 +88,7 @@ input { border: 0; }
 
 .error {
     font-size: 25px;
+    line-height: 29px;
     color: #ff0033;
 }
 
@@ -56,63 +98,95 @@ input { border: 0; }
     height:50px;
 }
 
+.btn-group > .btn {
+    font-size: 35px;
+    line-height: 39px;
+    width:350px;
+    height:50px;
+}
+
 .w350{
     width:350px;
 }
 
-#camera{
+div.cameraLogin div.camera{
     width: 480px;
     height: 360px;
     margin: 0 auto;
+    border: 5px solid #ffffff;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
 }
 
-#camera video{
+div.cameraLogin div.info{
+    margin: 0 auto;
+    padding: 10px 0px; 
+}
+
+div.camera video{
     width: 480px;
     height: 360px;
 }
 
-#camera canvas{
+div.camera canvas{
     display:none;
+}
+
+div.inputLogin {
+    font-size: 20px;
+    float: right;
+    margin: 30px 30px 30px 0px;
 }
 
 #username {
     font-size: 30px;
+    line-height: 34px;
     width: 700px;
     height: 60px;
 }
 
 #input_code {
     font-size: 50px;
+    line-height: 54px;
     width: 350px;
     height: 60px;
 }
 
-#disp_name{
-    height: 60px;
+div.input_disp{
+    padding:15px;
+}
+div.input_disp div.detail {
+    width: 80%;
+    padding:15px;
     background: #ffffff;
-    color: #555555;
+    color: #555555;  
     font-size: 35px;
-    margin: 30px;
-    top: 50%;
+    margin: 0 auto;
 	border-radius: 10px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px; 
 }
 
-#disp_name p{
-    line-height: 60px;
-}
+/*#disp_name p{
+    line-height: 50px;
+}*/
 
 #home{
     font-size: 20px;
+    line-height: 24px;
+    position: absolute;
+    top: 24px;
+    left: 24px;
 }
 
-#outh_str{
-    height: 220px;
+div.oath{
     background: #ffffff;
     color: #555555;
     font-size: 35px;
+    line-height: 39px;
     margin: 30px;
+    padding: 15px 15px 35px 15px; 
     top: 50%;
   	border-radius: 10px;
 	-webkit-border-radius: 10px;
