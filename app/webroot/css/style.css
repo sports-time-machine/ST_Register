@@ -14,39 +14,6 @@ div.info {
     padding: 8px 0px;  
 }
 
-div.sptmy {
-    color: #ffffff;
-    background: #199bc6;
-    padding: 12px 0px;
-}
-
-div.sptmy div.link {
-    padding: 8px 0px;
-}
-
-div.sptmy div.info {
-    border: solid 1px #ffffff;
-    background: #5fa6db;
-    width: 90%;
-}
-
-div.share {
-    color: #ffffff;
-    background: #4db332;
-    padding: 12px 0px;
-}
-
-div.share div.link {
-    padding: 8px 0px;
-}
-
-
-div.share div.info {
-    border: solid 1px #ffffff;
-    background: #6db92b;
-    width: 90%;
-}
-
 #header {
     font-size: 50px;
     margin: 40px 0px 25px 0px;
@@ -64,9 +31,49 @@ div.share div.info {
 }
 
 #footer {
-    padding: 25px 0px 0px 0px;
+    position: absolute;
+    bottom: 0px;
     font-size: 28px;
     line-height: 32px;  
+    width:100%;
+}
+
+#footer  div.link {
+    padding: 8px 0px;
+}
+
+#footer  div.link img{
+    margin: -5px 0px 0px 0px;
+}
+
+#footer div.sptmy {
+    color: #ffffff;
+    background: #199bc6;
+    padding: 12px 0px;
+    width: 50%;
+    height: 165px;
+    clear: both; 
+    float:left;
+}
+
+#footer div.sptmy div.info {
+    border: solid 1px #ffffff;
+    background: #5fa6db;
+    width: 90%;
+}
+
+#footer div.share {
+    color: #ffffff;
+    background: #4db332;
+    padding: 12px 0px;
+    width: 50%;
+    height: 165px;
+}
+
+#footer div.share div.info {
+    border: solid 1px #ffffff;
+    background: #6db92b;
+    width: 90%;
 }
 
 a { color: #ffffff; cursor:pointer; text-decoration: underline;}
@@ -110,8 +117,8 @@ input { border: 0; }
 }
 
 div.cameraLogin div.camera{
-    width: 480px;
-    height: 360px;
+    width: 400px;
+    height: 300px;
     margin: 0 auto;
     border: 5px solid #ffffff;
 	border-radius: 10px;
@@ -125,8 +132,8 @@ div.cameraLogin div.info{
 }
 
 div.camera video{
-    width: 480px;
-    height: 360px;
+    width: 400px;
+    height: 300px;
 }
 
 div.camera canvas{
@@ -136,7 +143,7 @@ div.camera canvas{
 div.inputLogin {
     font-size: 20px;
     float: right;
-    margin: 30px 30px 30px 0px;
+    margin: -15px 30px 15px 0px;
 }
 
 #username {

@@ -159,7 +159,7 @@ $(function(){
 
 <div class="cameraLogin">
     <div class="camera">
-        <video id="video" autoplay width="480" height="360"></video> 
+        <video id="video" autoplay width="400" height="300"></video> 
         <canvas id="canvas" ></canvas>
     </div>
     <div>
@@ -178,7 +178,7 @@ $(function(){
     </div>
 </div>
 </form>
-    
+
 <div class="modal hide fade" id="errorModal">
     <div class="error modal-body" id="result"></div>
 </div>    
