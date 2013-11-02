@@ -122,7 +122,13 @@ class RegisterController extends AppController {
             
             $name['Name']['user_id'] = $player['User']['id'];
             $name['Name']['username'] = $this->Session->read('Register.name'); //名前を決定
-            $name['Name']['gender'] = $this->Session->read('Register.gender'); //性別を決定
+            
+            $gender_str="";
+            if ($this->Session->read('Register.gender') == "male") $gender_str = "男性";
+            if ($this->Session->read('Register.gender') == "female") $gender_str = "女性";
+            if ($this->Session->read('Register.gender') == "other") $gender_str = "その他";
+
+            $name['Name']['gender'] = $gender_str; //性別を決定
             $name['Name']['age'] = $this->Session->read('Register.age'); //年齢を決定
             
             $this->Name->set($name);

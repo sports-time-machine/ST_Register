@@ -45,9 +45,6 @@
         <div id="content" class="clear">
             <?php echo $this->fetch('content'); ?>
         </div>
-        <div id="footer" class="clear">
-            <?php echo $this->element('footer'); ?>
-        </div>   
     </div>
 </body>
 </html>
