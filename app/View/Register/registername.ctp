@@ -54,7 +54,7 @@ $(function(){
                 <br />
                 <div>せんしゅめいを入力してください</div>
                 <div>
-                    <?php echo $this->Form->text('username',array('label' => false, 'default' => $register['name'] , "maxlength" => $maxlength)); ?>
+                    <?php echo $this->Form->text('username',array('label' => false, 'default' => $register['name'] , "maxlength" => $maxlength, 'autocomplete' => 'off')); ?>
                 </div>
                 <br />
                 <br />

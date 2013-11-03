@@ -73,7 +73,7 @@ $(function(){
 </div>
 <div>
     <div>
-        <?php echo $this->Form->text('input_code',array('label' => false, 'class' => "input" , "maxlength" => 8)); ?>
+        <?php echo $this->Form->text('input_code',array('label' => false, 'class' => "input" , "maxlength" => 8, 'autocomplete' => 'off')); ?>
     </div>
     <div>
         <?php echo $this->Form->button('よみこみ',array('type' => 'button', 'div' => false, 'id' => 'read', 'class' => 'btn')) ?>
