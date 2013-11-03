@@ -120,7 +120,7 @@ App::import('Vendor', 'PHPUnit', array('file' => 'PHPUnit.php')); // pear_local 
 CakePlugin::load('DebugKit');
 
 // 本番環境の判定
-if (strtoupper($_SERVER['SERVER_NAME']) == 'ST_SERVER') {
+if (strtoupper($_SERVER['SERVER_NAME']) == 'ST_SERVER' || $_SERVER['SERVER_ADDR'] == '192.168.0.100') {
 	define('PRODUCTION', true);
 	Configure::write('debug', 0); // debug = 0 にする
 } else {
