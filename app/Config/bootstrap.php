@@ -132,8 +132,11 @@ define('MIRROR_API_URL', 'http://210.129.198.1/api/');
 //var_dump(PRODUCTION);
 
 // ムービーのパス
-define('MOVIE_PATH', 'C:\\ST\\Movie');
-
+if ($_SERVER['SERVER_ADDR'] == '192.168.0.100') {
+	define('MOVIE_PATH', '/ST/Movie');
+} else {
+	define('MOVIE_PATH', 'C:\\ST\\Movie');
+}
 
 
 // setFlashメッセージの種類
