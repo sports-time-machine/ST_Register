@@ -139,6 +139,8 @@ class UploadController extends AppController {
 		$msg = sprintf('%05d', $sec). "s [{$count}/{$total}] " . $msg;
 		//flush(); ob_flush(); // バッファをフラッシュ
 		
+		// ファイル削除
+		unlink($zip_file);
 		/*
 		echo "<br><br>";
 		echo "アップロードが完了しました。成功: {$success_count}　失敗: {$fail_count}<br>";
