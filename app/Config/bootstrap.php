@@ -131,6 +131,10 @@ if (strtoupper($_SERVER['SERVER_NAME']) == 'ST_SERVER' || $_SERVER['SERVER_ADDR'
 define('MIRROR_API_URL', 'http://210.129.198.1/api/');
 //var_dump(PRODUCTION);
 
+// ムービーのパス
+define('MOVIE_PATH', 'C:\\ST\\Movie');
+
+
 
 // setFlashメッセージの種類
 // ex. $this->setFlash($msg, SET_FLASH_INFO);

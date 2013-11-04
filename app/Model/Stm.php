@@ -298,4 +298,25 @@ class Stm extends AppModel
 		return $player_id;
 	}
 	
+
+	// 各記録のムービーディレクトリのパスを生成
+	// G0000HS200 → C:\ST\Movie\0\0\2\S\H\0\0\0\0\0
+	public function generateMoviePathFromRecordId($record_id) {
+		// 正規化
+		// TODO あとで共通化
+		$record_id = $this->generateRecordIdWithoutG($record_id);
+		
+		// 逆から1文字ずつフォルダ階層にする
+		$char_array = str_split(strrev($record_id));
+		$path = implode(DS, $char_array);
+		return $path;
+	}
+	
+	// 先頭にGが付いていたらGを除去する
+	public function generateRecordIdWithoutG($record_id) {
+		if (stripos($record_id, 'G') === 0 && strlen($record_id) > 10) {
+			$record_id = substr($record_id, 1);
+		}
+		return $record_id;
+	}
 }
