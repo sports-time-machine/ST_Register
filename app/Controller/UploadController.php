@@ -114,7 +114,7 @@ class UploadController extends AppController {
 			$this->redirect(array('action' => 'movies'));
 		}
 		// zipアーカイブを作成
-		$zip_file = $path . DS. $record_id . '.zip';
+		$zip_file = sys_get_temp_dir() . DS. $record_id . '.zip';
 		
 		$zip = new ZipArchive();
 		$res = $zip->open($zip_file, ZipArchive::CREATE);
@@ -123,7 +123,7 @@ class UploadController extends AppController {
 				$movie_file = $record_id . "-$i.stmov";
 				//pr($movie_file);
 				if (file_exists($path . DS . $movie_file)) {
-					$zip->addfile($path . DS . $movie_file, $movie_file);
+					$zip->addFromString($movie_file, file_get_contents($path . DS . $movie_file));
 				}
 			}
 			$zip->close();
