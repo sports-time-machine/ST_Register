@@ -170,6 +170,46 @@ class Upload extends AppModel
 		}
 	}
 	
+	// WebAPIでオブジェクトを追加
+	public function recordMovieAddWithoutFile($record_id) {
+		$a = array();
+		$a['Record']['record_id'] = $this->fixRecordId($record_id);
+
+		$f = explode('.', $record_id . '.zip');
+		$a['Movie'][0]['filename'] = $this->fixRecordId($f[0]);
+		$a['Movie'][0]['ext']      = $f[1];
+		$a['Movie'][0]['mime']     = 'application/octet-stream';
+		//$a['Movie'][0]['data']     = base64_encode(file_get_contents($zip_path));
+		//$a['Movie'][0]['size']     = filesize($zip_path);
+
+		
+		//pr($a);exit;
+		//$json = json_encode($a);
+
+		$url = MIRROR_API_URL . 'recordMovieAddWithoutFile';
+		$options = array(
+			'http' => array(
+				'method'  => 'POST',
+				'content' => http_build_query($a),
+				'header'  => 'Content-Type: application/x-www-form-urlencoded',
+			),
+		);
+		$context = stream_context_create($options);
+		$result_json = file_get_contents($url, false, $context);
+		$result = json_decode($result_json, true);
+		if ($result['code'] == 200) {
+			$msg = "{$record_id} recordMovieAdd success";
+			echo $msg . '<br><br>';
+			$this->log($msg);
+			return true;
+		} else {
+			$msg = "{$record_id} recordMovieAdd fail. {$result['code']}: {$result['result']['message']}";
+			echo $msg . '<br><br>';
+			$this->log($msg);
+			return false;
+		}
+	}
+	
 	// 先頭にGが付いていなかったらGを付与する
 	public function fixRecordId($record_id) {
 		if (stripos($record_id, 'G') !== 0) {
