@@ -214,21 +214,53 @@ class UploadController extends AppController {
 		$sql = "SELECT * FROM records
 				LEFT JOIN record_movies ON record_movies.record_id = records.id
 				WHERE record_movies.record_id IS NULL
-				LIMIT 5
+				ORDER BY records.register_date ASC
+				LIMIT 1000
 				";
 		$r = $this->Remote->query($sql);
 		//pr($r);
 		
-		$start = time();
+		foreach($r as $v) {
+			if (date('H') == 9) {
+				if (date('w') != 2) { // 火曜日以外は9時台になったら終了
+					echo "9時になったので終了します"; exit;
+				}
+			}
+			
+			pr($v['records']['record_id']);
+			$this->movieUploadOne($v['records']['record_id']);
+		}
+		
+		exit;
+	}
+	
+	public function movieAutoUploadRev() {
+		$sql = "SELECT * FROM records
+				LEFT JOIN record_movies ON record_movies.record_id = records.id
+				WHERE record_movies.record_id IS NULL
+				ORDER BY records.register_date DESC
+				LIMIT 1000
+				";
+		$r = $this->Remote->query($sql);
+		//pr($r);
 		
 		foreach($r as $v) {
+			if (date('H') == 9) {
+				if (date('w') != 2) { // 火曜日以外は9時台になったら終了
+					echo "9時になったので終了します"; exit;
+				}
+			}
+			
 			pr($v['records']['record_id']);
+			$this->movieUploadOne($v['records']['record_id']);
 		}
 		
 		exit;
 	}
 	
 	public function movieUploadOne($record_id) {
+		$start = time();
+		
 		$record_id = $this->Stm->generateRecordIdWithoutG($record_id); // Gなし
 		$path = MOVIE_PATH . DS . $this->Stm->generateMoviePathFromRecordId($record_id);
 		
@@ -238,6 +270,13 @@ class UploadController extends AppController {
 		}
 		// zipアーカイブを作成
 		$zip_file = sys_get_temp_dir() . DS. $record_id . '.zip';
+		
+		// すでにファイルがあって200MB以上の場合スキップ
+		if (file_exists($zip_file) && 200000000 < filesize($zip_file)) {
+			$msg = "200MBを超えたためスキップしました<br>";
+			print_r($msg);
+			return;
+		}
 		
 		$zip = new ZipArchive();
 		$res = $zip->open($zip_file, ZipArchive::CREATE);
@@ -252,21 +291,23 @@ class UploadController extends AppController {
 			$zip->close();
 		}
 		
+		// 200MB以上の場合スキップ
+		if (file_exists($zip_file) && 200000000 < filesize($zip_file)) {
+			$msg = "200MBを超えたためスキップしました<br>";
+			print_r($msg);
+			return;
+		}
 		
 		// ファイルアップロード
 		ob_start();
 		$r = $this->Upload->recordMovieAdd($record_id, $zip_file);
-		if ($r) { $success_count++; } else { $fail_count++; }
 		$msg = ob_get_contents(); ob_end_clean();
-		$count++; $sec = time() - $start;
-		$msg = sprintf('%05d', $sec). "s" . $msg;
-		//flush(); ob_flush(); // バッファをフラッシュ
+		$sec = time() - $start;
+		$msg = sprintf('%05d', $sec). "s " . $msg;
+		flush(); ob_flush(); // バッファをフラッシュ
 		
 		// ファイル削除
 		unlink($zip_file);
-		
-		$msg .= "アップロードが完了しました。";
-		pr($msg);
 	}
 	
 }
