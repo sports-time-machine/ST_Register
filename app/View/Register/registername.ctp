@@ -51,13 +51,12 @@ $(function(){
     <form action="<?php echo $this->Html->webroot?>Register/confirm" id="RegisternameForm" method="post" accept-charset="utf-8">
         <div id="register_name">
                 <div>せんしゅID:<?php echo $register['player_id']; ?></div>
-                <br />
+		<br />
                 <div>せんしゅめいを入力してください</div>
                 <div>
                     <?php echo $this->Form->text('username',array('label' => false, 'default' => $register['name'] , "maxlength" => $maxlength, 'autocomplete' => 'off')); ?>
                 </div>
-                <br />
-                <br />
+		<br />
                 <div>せいべつを選んでください</div>
                 <?php echo $this->Form->hidden('gender',array('default' => $register['gender'])); ?>
                 <div class="btn-group" data-toggle="buttons-radio">
@@ -65,20 +64,17 @@ $(function(){
                     <button type="button" class="btn radio " name="female">女性(おんなのこ)</button>
                     <button type="button" class="btn radio " name="other">その他(そのた)</button>         
                 </div>
-                <br />
-                <br />
+		<br />
                 <br />
                 <div>ねんれいを選んでください</div>
                 <div>
                     <?php echo $this->Form->select('age', $ages, array('label'=>false, 'class' => 'btn', 'default' => $register['age'], 'empty' => false)); ?>  
                 </div>
                 <br />
-                <br />
                 <?php echo $this->Form->hidden('player_id'); ?>
                 <div>
                     <?php echo $this->Form->button('けってい',array('label' => false, 'class' => 'btn', 'id' => 'decide')); ?>    
                 </div>
-                
                 <div class="modal hide fade" id="errorModal">
                     <div class="error modal-body" id="result"></div>
                 </div>

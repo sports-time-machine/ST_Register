@@ -13,9 +13,7 @@ $(function(){
 <div class="clear">
     <form action="<?php echo $this->Html->webroot?>Register/oath" id="ConfirmForm" method="post" accept-charset="utf-8">
         <div>これでよろしいですか？</div>
-        <br />
         <div>せんしゅID:<?php echo $register['player_id']; ?></div>
-        <br />
         <div class="input_disp">
             せんしゅ名
             <div class="detail">
@@ -34,7 +32,6 @@ $(function(){
                 <?php echo $disp_age; ?>
             </div>
         </div>
-        <br />
         <?php echo $this->Form->button('やりなおし',array('label' => false, 'class' => 'btn', 'id' => 'prev')); ?>        
         <?php echo $this->Form->button('けってい',array('label' => false, 'class' => 'btn', 'id' => 'decide')); ?>
        
