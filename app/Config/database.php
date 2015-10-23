@@ -94,7 +94,7 @@ class DATABASE_CONFIG {
 	public $remote = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => '210.129.198.1', /* www4235ui.sakura.ne.jp */
+		'host' => '210.136.7.253', /* labs.granite.jp */
 		'login' => 'st_player',
 		'password' => 'z1EJWIgvKxIzGIrX6Yxz',
 		'database' => 'st_player',
@@ -102,7 +102,7 @@ class DATABASE_CONFIG {
 		'port' => '3306',
 		'encoding' => 'utf8',
 	);
-	
+
 	public function __construct() {
 		if (PRODUCTION) {
 			$this->default = $this->production;
