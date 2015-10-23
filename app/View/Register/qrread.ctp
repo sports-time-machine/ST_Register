@@ -29,7 +29,7 @@ function checkPlayerRegister_Ajax(code){
 		url: url + '?time=' + (new Date).getTime(),
 		data: data,
 		async: true,
-		success: function(html){  
+		success: function(html){
             if (html=="OK") {
                 //プレフィックスを削除
                 $('#player_id').val(code.substr(1));
@@ -50,18 +50,18 @@ function checkPlayerRegister_Ajax(code){
 
 //エラーをモーダルで表示
 function showModal(mes){
-    $('#result').html(mes); 
+    $('#result').html(mes);
     $("#errorModal").modal("show");
 }
-  
+
 $(function(){
     var video = document.getElementById('video');
     var canvas = document.getElementById('canvas');
-    
+
     //canvasは２倍の大きさにしないと駄目みたい？
     canvas.width = video.width*2;
     canvas.height = video.height*2;
-    
+
     var ctx = canvas.getContext('2d');
     var localMediaStream = null;
 
@@ -84,7 +84,7 @@ $(function(){
                 video.src = stream; //Operaは直接streamを流し込む
             }else{
                 video.src = window.URL.createObjectURL(stream);
-            } 
+            }
             localMediaStream = stream;
         },
         function(err){
@@ -94,36 +94,36 @@ $(function(){
 
     // QRコード取得時のコールバックを設定
     qrcode.callback = function(result) {
-         
+
       // QRコード取得結果を表示
       if (result != null) {
         //QRコード出力値のバリデーションを行わなければならない
         var reg = /^P[A-Z0-9]{8}$/;    //P+文字アルファベット8つだとマッチ
-        
+
         if (result.match(reg)){
             //読み込みできたら時間経過のイベント消去
             //非同期通信時にタイムアウトや読み込みを防ぐため
             clearInterval(intervalId);
-            clearTimeout(timeoutId);        
-            checkPlayerRegister_Ajax(result); 
+            clearTimeout(timeoutId);
+            checkPlayerRegister_Ajax(result);
         }else{
             showModal("<div>せんしゅQRコードではありません</div>");
         }
       }
 
     };
-      
+
     //ボタンイベント
     $("#read").click(function() {
-    
+
         intervalId = setInterval(function(){
-          
+
             if (localMediaStream) {
                 ctx.drawImage(video, 0, 0);
                 // QRコード取得開始
-                qrcode.decode(canvas.toDataURL('image/webp'));        
-            }     
-            
+                qrcode.decode(canvas.toDataURL('image/webp'));
+            }
+
         },500);
 
         //10秒経過するとタイムアウト
@@ -133,39 +133,38 @@ $(function(){
 
         $("#read").attr('disabled', true);
         $('#info').html("<div>よみとり中です…</div><div>せんしゅカードのQRコードをうつしてください</div>");
-       
+
     });
-    
+
     //エラー表示時には、時間経過系のイベントを全て消去
     $("#errorModal").on('show',function(){
         clearInterval(intervalId);
-        clearTimeout(timeoutId);        
+        clearTimeout(timeoutId);
     });
-    
+
     //読み込みボタンの復活
     $("#errorModal").on('hidden',function(){
         $('#read').removeAttr('disabled');
-        $('#info').html("<div>せんしゅカードのQRコードをうつして</div><div>「よみこみ」ボタンを押してください</div>");  
+        $('#info').html("<div>せんしゅカードのQRコードをうつして「よみこみ」ボタンを押してください</div>");
     });
-    
+
     $("#to_input").click(function(){
-        location.href = "<?php echo $this->Html->webroot?>Register/input_code"; 
+        location.href = "<?php echo $this->Html->webroot?>Register/input_code";
     });
-    
-     
+
+
 });
 </script>
 <form action="<?php echo $this->Html->webroot?>Register/registername" id="QrreadForm" method="post" accept-charset="utf-8">
 
 <div class="cameraLogin">
     <div class="camera">
-        <video id="video" autoplay width="400" height="300"></video> 
+        <video id="video" autoplay width="400" height="300"></video>
         <canvas id="canvas" ></canvas>
     </div>
     <div>
         <div class="info">
-            せんしゅカードのQRコードをうつして<br />
-            「よみこみ」ボタンを押してください
+            せんしゅカードのQRコードをうつして「よみこみ」ボタンを押してください
         </div>
         <div class="info">
             <?php echo $this->Form->button('よみこみ',array('type' => 'button', 'div' => false, 'id' => 'read', 'class' => 'btn')) ?>
@@ -181,4 +180,4 @@ $(function(){
 
 <div class="modal hide fade" id="errorModal">
     <div class="error modal-body" id="result"></div>
-</div>    
+</div>
