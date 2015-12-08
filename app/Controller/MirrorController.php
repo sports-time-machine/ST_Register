@@ -110,7 +110,7 @@ class MirrorController extends AppController {
 				// WebAPIで記録を登録
 				$record = $this->Stm->record($v['records']['record_id']);
 				$record['Record']['md5hex'] = $this->Stm->generateRecordMd5($record);
-				$record['Record']['plcae_id'] = PLACE_ID;
+				$record['Record']['place_id'] = PLACE_ID;
 				//pr($record); exit;
 
 				$json = json_encode($record);
