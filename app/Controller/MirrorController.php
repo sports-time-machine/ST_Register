@@ -7,15 +7,15 @@ class MirrorController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		
+
 	}
-	
+
 	public function index(){
 		// 選手はnamesにデータがあって is_synced = 0 のものを送りつける
 		// OKだったら is_synced = 1 にする
-		
+
 		// 記録データは、走った日の最新を取ってきて、それより新しいものを送りつける
-		
+
 		$player_data = $this->Mirror->getUserForRemoteUpdate();
 		if (!empty($player_data)) {
 			$player_lastupdate_time = date('Y-m-d H:i:s', strtotime($player_data[0]['names']['created']));
@@ -24,8 +24,8 @@ class MirrorController extends AppController {
 			$player_lastupdate_time = null;
 			$player_update_num = 0;
 		}
-		
-		
+
+
 		// ローカルの記録情報を検索
 		$record_data = $this->Mirror->getRecordForRemoteUpdate();
 		//pr($record_data);
@@ -36,26 +36,26 @@ class MirrorController extends AppController {
 			$record_lastupdate_time = null;
 			$record_update_num = 0;
 		}
-		
-		
-		
-		
+
+
+
+
 		$this->set('player_lastupdate_time', $player_lastupdate_time);
 		$this->set('player_update_num', $player_update_num);
 		$this->set('player_data', $player_data);
-		
+
 		$this->set('record_lastupdate_time', $record_lastupdate_time);
 		$this->set('record_update_num', $record_update_num);
 		$this->set('record_data', $record_data);
 	}
-	
+
 	// 同期実行
 	public function execute() {
 		// タイムアウトを無制限にする
 		set_time_limit(0);
 		$player_success_count = 0;
 		$record_success_count = 0;
-		
+
 		// 選手データ同期
 		$player_data = $this->Mirror->getUserForRemoteUpdate();
 		if (!empty($player_data)) {
@@ -63,7 +63,7 @@ class MirrorController extends AppController {
 			//pr($this->User->find('first'));
 			//pr($this->RemoteUser->find('first'));
 			//exit;
-			
+
 			foreach($player_data as $v) {
 				// WebAPIで選手を登録
 				$a = array();
@@ -73,7 +73,7 @@ class MirrorController extends AppController {
 				$a['Profile']['age' ]   = $v['names']['age'];
 				//pr($a);
 				$json = json_encode($a);
-				
+
 				$url = MIRROR_API_URL . 'userSave';
 				$options = array(
 					'http' => array(
@@ -96,8 +96,8 @@ class MirrorController extends AppController {
 			}
 			//pr($player_success_count);
 		}
-		
-		
+
+
 		// 記録データ同期
 		$record_data = $this->Mirror->getRecordForRemoteUpdate();
 		if (!empty($record_data)) {
@@ -105,15 +105,16 @@ class MirrorController extends AppController {
 			//pr($this->User->find('first'));
 			//pr($this->RemoteUser->find('first'));
 			//exit;
-			
+
 			foreach($record_data as $v) {
 				// WebAPIで記録を登録
 				$record = $this->Stm->record($v['records']['record_id']);
 				$record['Record']['md5hex'] = $this->Stm->generateRecordMd5($record);
+				$record['Record']['plcae_id'] = PLACE_ID
 				//pr($record); exit;
-				
+
 				$json = json_encode($record);
-				
+
 				$url = MIRROR_API_URL . 'recordSave';
 				$options = array(
 					'http' => array(
@@ -137,7 +138,7 @@ class MirrorController extends AppController {
 			//pr($record_success_count);
 		}
 		//exit;
-		
+
 		$msg = @"選手 {$player_success_count} 件、記録 {$record_success_count} 件 の同期を実行しました。";
 		$this->log($msg);
 		$this->Session->setFlash($msg, SET_FLASH_INFO);

@@ -129,6 +129,8 @@ if (strtoupper($_SERVER['SERVER_NAME']) == 'ST_SERVER' || $_SERVER['SERVER_ADDR'
 
 // 同期先API
 define('MIRROR_API_URL', 'http://www.stmy.net/api/');
+// 会場ID（開催番号を会場毎にセットすること 1:山口 2:六本木 3:十勝帯広 4:鹿児島 5:山口YCAM 6:高松）
+define('PLACE_ID', null);
 //var_dump(PRODUCTION);
 
 // ムービーのパス
