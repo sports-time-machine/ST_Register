@@ -69,6 +69,7 @@ class MirrorController extends AppController {
 				$a = array();
 				$a['User']['player_id'] = $this->Stm->generateShortPlayerId($v['users']['player_id']);
 				$a['User']['username' ] = $v['names']['username'];
+				$a['User']['place_id']  = PLACE_ID;
 				$a['Profile']['gender' ] = $v['names']['gender'];
 				$a['Profile']['age' ]   = $v['names']['age'];
 				//pr($a);
