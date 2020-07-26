@@ -1,21 +1,21 @@
 <?php
-echo $this -> Html -> script( 'webcam/grid', array( 'inline' => false ) );
-echo $this -> Html -> script( 'webcam/version', array( 'inline' => false ) );
-echo $this -> Html -> script( 'webcam/detector', array( 'inline' => false ) );
-echo $this -> Html -> script( 'webcam/formatinf', array( 'inline' => false ) );
-echo $this -> Html -> script( 'webcam/errorlevel', array( 'inline' => false ) );
-echo $this -> Html -> script( 'webcam/bitmat', array( 'inline' => false ) );
-echo $this -> Html -> script( 'webcam/datablock', array( 'inline' => false ) );
-echo $this -> Html -> script( 'webcam/bmparser', array( 'inline' => false ) );
-echo $this -> Html -> script( 'webcam/datamask', array( 'inline' => false ) );
-echo $this -> Html -> script( 'webcam/rsdecoder', array( 'inline' => false ) );
-echo $this -> Html -> script( 'webcam/gf256poly', array( 'inline' => false ) );
-echo $this -> Html -> script( 'webcam/gf256', array( 'inline' => false ) );
-echo $this -> Html -> script( 'webcam/decoder', array( 'inline' => false ) );
-echo $this -> Html -> script( 'webcam/qrcode', array( 'inline' => false ) );
-echo $this -> Html -> script( 'webcam/findpat', array( 'inline' => false ) );
-echo $this -> Html -> script( 'webcam/alignpat', array( 'inline' => false ) );
-echo $this -> Html -> script( 'webcam/databr', array( 'inline' => false ) );
+echo $this -> Html -> script('webcam/grid', array( 'inline' => false ));
+echo $this -> Html -> script('webcam/version', array( 'inline' => false ));
+echo $this -> Html -> script('webcam/detector', array( 'inline' => false ));
+echo $this -> Html -> script('webcam/formatinf', array( 'inline' => false ));
+echo $this -> Html -> script('webcam/errorlevel', array( 'inline' => false ));
+echo $this -> Html -> script('webcam/bitmat', array( 'inline' => false ));
+echo $this -> Html -> script('webcam/datablock', array( 'inline' => false ));
+echo $this -> Html -> script('webcam/bmparser', array( 'inline' => false ));
+echo $this -> Html -> script('webcam/datamask', array( 'inline' => false ));
+echo $this -> Html -> script('webcam/rsdecoder', array( 'inline' => false ));
+echo $this -> Html -> script('webcam/gf256poly', array( 'inline' => false ));
+echo $this -> Html -> script('webcam/gf256', array( 'inline' => false ));
+echo $this -> Html -> script('webcam/decoder', array( 'inline' => false ));
+echo $this -> Html -> script('webcam/qrcode', array( 'inline' => false ));
+echo $this -> Html -> script('webcam/findpat', array( 'inline' => false ));
+echo $this -> Html -> script('webcam/alignpat', array( 'inline' => false ));
+echo $this -> Html -> script('webcam/databr', array( 'inline' => false ));
 ?>
 
 <script type="text/javascript">
@@ -66,31 +66,18 @@ $(function(){
     var localMediaStream = null;
 
     //カメラ使えるかチェック
-    var hasGetUserMedia = function() {
-        return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
-            navigator.mozGetUserMedia || navigator.msGetUserMedia);
-    }
-
-    if (!hasGetUserMedia()) {
+    if (!navigator.mediaDevices) {
         alert("未対応ブラウザです。");
     }
     window.URL = window.URL || window.webkitURL;
-    navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia ||
-                              navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
-    navigator.getUserMedia({video: true},
-        function(stream) {
-            if(navigator.userAgent.indexOf("Opera") != -1){
-                video.src = stream; //Operaは直接streamを流し込む
-            }else{
-                video.src = window.URL.createObjectURL(stream);
-            }
-            localMediaStream = stream;
-        },
-        function(err){
+    navigator.mediaDevices.getUserMedia({video:true})
+        .then( function(stream) {
+            video.srcObject = stream
+        })
+        .catch(function(err){
             alert("カメラがありません。");
-        }
-    );
+        });
 
     // QRコード取得時のコールバックを設定
     qrcode.callback = function(result) {
@@ -167,7 +154,7 @@ $(function(){
             せんしゅカードのQRコードをうつして「よみこみ」ボタンを押してください
         </div>
         <div class="info">
-            <?php echo $this->Form->button('よみこみ',array('type' => 'button', 'div' => false, 'id' => 'read', 'class' => 'btn')) ?>
+            <?php echo $this->Form->button('よみこみ', array('type' => 'button', 'div' => false, 'id' => 'read', 'class' => 'btn')) ?>
             <?php echo $this->Form->hidden('player_id'); ?>
         </div>
     </div>
