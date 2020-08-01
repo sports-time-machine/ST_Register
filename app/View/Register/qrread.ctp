@@ -2,6 +2,8 @@
 
 <script type="text/javascript">
 var sending = false;
+var cameraStream = null;
+var facingFront = true;
 
 function showModal(mes){
     $('#result').html(mes);
@@ -11,7 +13,6 @@ function showModal(mes){
 //読み込まれたQRコードが既に選手登録済み、もしくは、予め登録されていないQRコードかチェック
 function checkPlayerRegister_Ajax(code){
     if (sending === true) {
-        console.log('qrcode is already sending.');
         return;
     }
     var url = "<?php echo $this->Html->webroot . 'register/check'; ?>";
@@ -39,61 +40,82 @@ function checkPlayerRegister_Ajax(code){
     }) ;
 }
 
+function syncCamera(video) {
+    const constraints = {
+        video: {
+            width: 640,
+            height: 480,
+            facingMode: (facingFront) ? 'user' : { exact: "environment" },
+        },
+        audio: false,
+    }
+
+    if (cameraStream) {
+        cameraStream.getVideoTracks().forEach(cam => cam.stop());
+    }
+
+    navigator.mediaDevices.getUserMedia(constraints)
+        .then( function(stream) {
+            cameraStream = stream;        
+            video.srcObject = stream;
+            if (facingFront) {
+                $("#video").css('transform', 'scale(-1, 1)');
+            } else {
+                $("#video").css('transform', '');
+            }
+        })
+        .catch(function(err){
+            alert("カメラが利用できません。");
+        });
+}
+
 $(function(){
     var video = document.getElementById('video');
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
-    var localMediaStream = null;
 
     //カメラ使えるかチェック
     if (!navigator.mediaDevices) {
         alert("カメラが利用できません。");
     }
-    window.URL = window.URL || window.webkitURL;
 
-    var constraints = {
-        video:{ facingMode: 'user' },
-        audio: false,
-    }
 
     var readQrCode = () => {
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
         const image = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const code = jsQR(image.data, canvas.width, canvas.height);
         if (code) {
-            console.log(code.data);
             //P+文字アルファベット8つだとマッチ
             if (code.data.match(/^P[A-Z0-9]{8}$/)) {
                 checkPlayerRegister_Ajax(code.data);
             }
         }
     };
+    video.onloadedmetadata = (_) => {
+        setInterval(readQrCode, 300);
+    } 
+    syncCamera(video);
 
-    navigator.mediaDevices.getUserMedia(constraints)
-        .then( function(stream) {
-            video.srcObject = stream;
-            video.onloadedmetadata = (_) => {
-                setInterval(readQrCode, 300);
-            } 
-        })
-        .catch(function(err){
-            alert("カメラが利用できません。");
-        });
+    $('#turnCamera').click((e) => {
+        e.preventDefault();
+        facingFront = !facingFront;        
+        syncCamera(video);
+    });
 });
 </script>
 <form action="<?php echo $this->Html->webroot?>Register/registername" id="QrreadForm" method="post" accept-charset="utf-8">
 
 <div class="cameraLogin">
+    <button id="turnCamera" style="margin-bottom:5px"><?= $this->Html->image('turn_camera.png', ['alt' => 'カメラ切り替え']); ?></button>
     <div class="camera">
-        <video id="video" autoplay width="400" height="300" style="transform: scale(-1, 1);"></video>
-        <canvas id="canvas" width="400" height="300"></canvas>
+        <video id="video" autoplay width="400" height="300"></video>
+        <canvas id="canvas" width="640" height="480"></canvas>
     </div>
     <div>
         <div class="info">
             せんしゅカードのQRコードをうつしてください
         </div>
     </div>
-
     <div class="inputLogin">
         <div><a href="<?php echo $this->Html->webroot?>Register/input_code">QRコードがよみこめないときはこちら</a></div>
     </div>
