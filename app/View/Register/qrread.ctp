@@ -28,9 +28,9 @@ function checkPlayerRegister_Ajax(code){
         if (data === "OK") {
             $('#player_id').val(code.substr(1));
             $('form').submit();
-        }else if (data == "NoData") {
+        }else if (data === "NoData") {
             showModal("<div>とうろくされたせんしゅ</div><div>QRコードではありません</div>");
-        }else if (data == "Registered") {
+        }else if (data === "Registered") {
             showModal("<div>このせんしゅQRコードは</div><div>すでにとうろくされています</div>");
         }else {
             showModal("<div>もういちどよみこみボタンを押してください</div>");
@@ -38,7 +38,6 @@ function checkPlayerRegister_Ajax(code){
     }).fail(() => {
         showModal("<div>サーバエラーです。</div><div>かかりの人をよんでください</div>");
     }).always(() => {
-        sending = false;
         $('#info').text('せんしゅカードのQRコードをうつしてください');
     }) ;
 }
@@ -72,7 +71,7 @@ function syncCamera(video) {
         });
 }
 
-$(function(){
+$(function(){    
     var video = document.getElementById('video');
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
@@ -102,6 +101,10 @@ $(function(){
         e.preventDefault();
         facingFront = !facingFront;        
         syncCamera(video);
+    });
+
+    $('#errorModal').on('hidden.bs.modal', function () {
+        sending = false;
     });
 });
 </script>
