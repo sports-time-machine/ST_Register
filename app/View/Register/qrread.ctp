@@ -111,7 +111,7 @@ $(function(){
 <form action="<?php echo $this->Html->webroot?>Register/registername" id="QrreadForm" method="post" accept-charset="utf-8">
 
 <div class="cameraLogin">
-    <button id="turnCamera" style="margin-bottom:5px"><?= $this->Html->image('turn_camera.png', ['alt' => 'カメラ切り替え']); ?></button>
+    <button id="turnCamera" style="margin-bottom:5px; padding: 5px; -webkit-appearance: none; background-color: #eee;"><?= $this->Html->image('turn_camera.png', ['alt' => 'カメラ切り替え']); ?></button>
     <div class="camera">
         <video id="video" autoplay width="400" height="300"></video>
         <canvas id="canvas" width="640" height="480"></canvas>
