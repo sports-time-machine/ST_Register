@@ -5,9 +5,10 @@ var sending = false;
 var cameraStream = null;
 var facingFront = true;
 
+
 function showModal(mes){
     $('#result').html(mes);
-    $("#errorModal").modal("show");
+    $('#errorModal').modal('show');
 }
 
 //読み込まれたQRコードが既に選手登録済み、もしくは、予め登録されていないQRコードかチェック
@@ -18,6 +19,7 @@ function checkPlayerRegister_Ajax(code){
     var url = "<?php echo $this->Html->webroot . 'register/check'; ?>";
     var data = { code : code};
     sending = true;
+    $('#info').text('よみこみました。かくにんちゅうです…');
 	$.ajax({
 		type: "POST",
 		url: url + '?time=' + (new Date).getTime(),
@@ -37,6 +39,7 @@ function checkPlayerRegister_Ajax(code){
         showModal("<div>サーバエラーです。</div><div>かかりの人をよんでください</div>");
     }).always(() => {
         sending = false;
+        $('#info').text('せんしゅカードのQRコードをうつしてください');
     }) ;
 }
 
@@ -79,7 +82,6 @@ $(function(){
         alert("カメラが利用できません。");
     }
 
-
     var readQrCode = () => {
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
         const image = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -112,7 +114,7 @@ $(function(){
         <canvas id="canvas" width="640" height="480"></canvas>
     </div>
     <div>
-        <div class="info">
+        <div id="info" class="info">
             せんしゅカードのQRコードをうつしてください
         </div>
     </div>
