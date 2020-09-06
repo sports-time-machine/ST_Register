@@ -16,18 +16,18 @@ div.info {
 
 #header {
     font-size: 50px;
-    margin: 40px 0px 25px 0px;
+    margin: 20px 0px 25px 0px;
     height: 135px;
     line-height: 52px;
 }
 
 #header div{
-    padding: 8px;
+    padding: 6px;
 }
 
 #content{
     font-size: 28px;
-    line-height: 32px;
+    line-height: 30px;
 }
 
 #footer {
@@ -100,15 +100,19 @@ input { border: 0; }
 }
 
 .btn {
-    font-size: 35px;
+    font-size: 30px;
     width:250px;
     height:50px;
+}
+
+#age.btn {
+    font-size: 26px;
 }
 
 .btn-group > .btn {
     font-size: 35px;
     line-height: 39px;
-    width:350px;
+    width:320px;
     height:50px;
 }
 
@@ -161,11 +165,11 @@ div.inputLogin {
 }
 
 div.input_disp{
-    padding:15px;
+    padding:6px;
 }
 div.input_disp div.detail {
     width: 80%;
-    padding:15px;
+    padding:10px;
     background: #ffffff;
     color: #555555;  
     font-size: 35px;
@@ -183,14 +187,14 @@ div.input_disp div.detail {
     font-size: 20px;
     line-height: 24px;
     position: absolute;
-    top: 24px;
+    top: 16px;
     left: 24px;
 }
 
 div.oath{
     background: #ffffff;
     color: #555555;
-    font-size: 35px;
+    font-size: 30px;
     line-height: 39px;
     margin: 30px;
     padding: 15px 15px 35px 15px; 
