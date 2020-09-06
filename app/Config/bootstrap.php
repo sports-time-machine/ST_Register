@@ -120,12 +120,16 @@ App::import('Vendor', 'PHPUnit', array('file' => 'PHPUnit.php')); // pear_local 
 CakePlugin::load('DebugKit');
 
 // 本番環境の判定
-if (strtoupper($_SERVER['SERVER_NAME']) == 'ST_SERVER' || $_SERVER['SERVER_ADDR'] == '192.168.0.100') {
+/*
+if (strtoupper($_SERVER['SERVER_NAME']) == 'ST_SERVER' || $_SERVER['SERVER_ADDR'] == '192.168.0.99') {
 	define('PRODUCTION', true);
 	Configure::write('debug', 0); // debug = 0 にする
 } else {
 	define('PRODUCTION', false);
 }
+*/
+define('PRODUCTION', true);
+Configure::write('debug', 0); // DebugKitを非表示にするにはここを0にする　デバッグ時は2にする
 
 // 同期先API
 define('MIRROR_API_URL', 'http://www.sptmy.net/api/');
@@ -134,10 +138,10 @@ define('PLACE_ID', null);
 //var_dump(PRODUCTION);
 
 // ムービーのパス
-if ($_SERVER['SERVER_ADDR'] == '192.168.0.100') {
-	define('MOVIE_PATH', '/ST/Movie');
-} else {
+if (DIRECTORY_SEPARATOR == '\\') {
 	define('MOVIE_PATH', 'C:\\ST\\Movie');
+} else {
+	define('MOVIE_PATH', '/ST/Movie');
 }
 
 
