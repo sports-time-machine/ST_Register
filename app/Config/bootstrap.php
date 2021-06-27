@@ -133,8 +133,8 @@ Configure::write('debug', 0); // DebugKitを非表示にするにはここを0�
 
 // 同期先API
 define('MIRROR_API_URL', 'http://www.sptmy.net/api/');
-// 会場ID（開催番号を会場毎にセットすること 1:山口 2:六本木 3:十勝帯広 4:鹿児島 5:山口YCAM 6:高松 7:2020鹿児島）
-define('PLACE_ID', 7);
+// 会場ID（開催番号を会場毎にセットすること 1:山口 2:六本木 3:十勝帯広 4:鹿児島 5:山口YCAM 6:高松 7:2020鹿児島 8:2021小松）
+define('PLACE_ID', 8);
 //var_dump(PRODUCTION);
 
 // ムービーのパス

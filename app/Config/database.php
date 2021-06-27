@@ -94,7 +94,8 @@ class DATABASE_CONFIG {
 	public $remote = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => '210.136.7.253', /* labs.granite.jp */
+		'host' => '210.136.7.253', /* labs.granite.jp 本番向け */
+		//'host' => '192.168.1.24', /* labs.granite.jp ローカルでのデータ登録用 */
 		'login' => 'st_player',
 		'password' => 'z1EJWIgvKxIzGIrX6Yxz',
 		'database' => 'st_player',
