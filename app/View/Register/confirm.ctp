@@ -26,7 +26,7 @@ $(function(){
                 <?php echo $disp_gender; ?>
             </div>
         </div>
-        <div class="input_disp">
+        <div class="input_disp" style="margin-bottom: 8px;">
             ねんれい
             <div class="detail">
                 <?php echo $disp_age; ?>

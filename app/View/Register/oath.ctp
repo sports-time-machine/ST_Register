@@ -13,12 +13,12 @@ $(function(){
 <div class="clear">
     <form action="<?php echo $this->Html->webroot?>Register/registered" id="OathForm" method="post" accept-charset="utf-8">
     <div class="oath">
-        <div class="text-center" style="padding:20px;"> スポーツタイムマシン選手宣誓　</div>
+        <div class="text-center" style="padding:20px 16px;"> スポーツタイムマシン選手宣誓　</div>
         <div class="text-left"> 
-       わたし<?php echo $register['name']; ?>は、<br /><br />
-       ・スポーツマンシップにのっとり正々堂々とプレイします。<br /><br />
-       ・タイムマシンマンシップにのっとり情報を、<br />
-       &nbsp;&nbsp;&nbsp;未来の自分・家族・友達・山口・地球・宇宙のために残します。<br />
+            <p>わたし<?php echo $register['name']; ?>は、</p>
+            <p>・スポーツマンシップにのっとり正々堂々とプレイします。</p>
+            <p>・タイムマシンマンシップにのっとり情報を、<br />
+            &nbsp;&nbsp;&nbsp;未来の自分・家族・友達・鹿児島・地球・宇宙のために残します。</p>
         </div>
     </div>
     <div>        
