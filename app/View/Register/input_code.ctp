@@ -15,15 +15,15 @@ function checkPlayerRegister_Ajax(code){
                 $('#player_id').val(code);
                 $('form').submit();
             }else if (html == "NoData") {
-                showModal("<div>とうろくされたせんしゅ</div><div>コードではありません</div>");
+                showModal("<div><?= __("とうろくされたせんしゅコードではありません")?></div>");
             }else if (html == "Registered") {
-                showModal("<div>このせんしゅコードは</div><div>すでにとうろくされています</div>");
+                showModal("<div><?= __("このせんしゅコードはすでにとうろくされています")?></div>");
             }else {
-                showModal("<div>もういちどよみこみボタンを押してください</div>");
+                showModal("<div><?= __("もういちどよみこみボタンを押してください")?></div>");
             }
         },
         error: function(a,b,c){
-            showModal("<div>サーバエラーです。</div><div>かかりの人をよんでください</div>");
+            showModal("<div><?= __("サーバエラーです")?><br><?= __("かかりの人をよんでください")?></div>");
         }
 	});
 }
@@ -37,7 +37,7 @@ function showModal(mes){
 $(function(){
     
     $('#read').removeAttr('disabled');
-    $('#info').html("<div>せんしゅカードに書いてあるコードを書いて</div><div>「よみこみ」ボタンを押してください</div>");  
+    $('#info').html("<?= str_replace("\n", "", nl2br(__("せんしゅカードに書いてあるコードを書いて\n「よみこみ」ボタンを押してください")))?>");  
     
     //ボタンイベント
     $("#read").click(function() {
@@ -61,15 +61,14 @@ $(function(){
     //読み込みボタンの復活
     $("#errorModal").on('hidden',function(){
         $('#read').removeAttr('disabled');
-        $('#info').html("<div>せんしゅカードに書いてあるコードを書いて</div><div>「よみこみ」ボタンを押してください</div>");  
+        $('#info').html("<?= str_replace("\n", "", nl2br(__("せんしゅカードに書いてあるコードを書いて\n「よみこみ」ボタンを押してください")))?>");  
     });
   
 });
 </script>
 <form action="<?php echo $this->Html->webroot?>Register/registername" id="InputCodeForm" method="post" accept-charset="utf-8">
 <div class="info">
-    <div>せんしゅカードに書いてあるコードを書いて</div>
-    <div>「よみこみ」ボタンを押してください</div>
+    <div><?= nl2br(__("せんしゅカードに書いてあるコードを書いて\n「よみこみ」ボタンを押してください")) ?></div>
 </div>
 <div>
     <div>

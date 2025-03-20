@@ -1,0 +1,203 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2025-03-18 10:28+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: ./templates/Registers/auth.php:7
+msgid "スポーツタイムマシン選手宣誓"
+msgstr ""
+
+#: ./templates/Registers/auth.php:9
+msgid "わたし{0}は、"
+msgstr ""
+
+#: ./templates/Registers/auth.php:11
+msgid "スポーツマンシップにのっとり正々堂々とプレイします。"
+msgstr ""
+
+#: ./templates/Registers/auth.php:12
+msgid "タイムマシンマンシップにのっとり情報を<br/>未来の自分・家族・友達・小松・石川・地球・宇宙のために残します。"
+msgstr ""
+
+#: ./templates/Registers/auth.php:17
+msgid "せんせいしません"
+msgstr ""
+
+#: ./templates/Registers/auth.php:19
+msgid "せんせいします"
+msgstr ""
+
+#: ./templates/Registers/confirm.php:5
+#: ./templates/Registers/register_name.php:67
+msgid "その他(そのた)"
+msgstr ""
+
+#: ./templates/Registers/confirm.php:7
+#: ./templates/Registers/register_name.php:63
+msgid "男性(おとこのこ)"
+msgstr ""
+
+#: ./templates/Registers/confirm.php:9
+#: ./templates/Registers/register_name.php:65
+msgid "女性(おんなのこ)"
+msgstr ""
+
+#: ./templates/Registers/confirm.php:12
+msgid "歳(さい)"
+msgstr ""
+
+#: ./templates/Registers/confirm.php:17
+msgid "これでよろしいですか？"
+msgstr ""
+
+#: ./templates/Registers/confirm.php:19
+#: ./templates/Registers/register_name.php:50
+msgid "せんしゅID"
+msgstr ""
+
+#: ./templates/Registers/confirm.php:23
+msgid "せんしゅ名"
+msgstr ""
+
+#: ./templates/Registers/confirm.php:27
+msgid "せいべつ"
+msgstr ""
+
+#: ./templates/Registers/confirm.php:31
+msgid "ねんれい"
+msgstr ""
+
+#: ./templates/Registers/confirm.php:35
+msgid "やりなおし"
+msgstr ""
+
+#: ./templates/Registers/confirm.php:36
+#: ./templates/Registers/register_name.php:84
+msgid "けってい"
+msgstr ""
+
+#: ./templates/Registers/confirm.php:40
+msgid "このせんしゅめいをぜったいに忘れないでくださいね"
+msgstr ""
+
+#: ./templates/Registers/error.php:2
+msgid "エラーがはっせいしました。もういちどやりなおしてください"
+msgstr ""
+
+#: ./templates/Registers/error.php:3
+msgid "なんどもこの画面がでるときは、かかりの人をよんでください"
+msgstr ""
+
+#: ./templates/Registers/error.php:6
+msgid "さいしょの画面へ"
+msgstr ""
+
+#: ./templates/Registers/inputcode.php:68
+msgid "せんしゅカードに書いてあるコードを書いて\n「よみこみ」ボタンを押してください"
+msgstr ""
+
+#: ./templates/Registers/inputcode.php:75
+msgid "よみこみ"
+msgstr ""
+
+#: ./templates/Registers/inputcode.php:88
+msgid "とうろくされたせんしゅコードではありません"
+msgstr ""
+
+#: ./templates/Registers/inputcode.php:91
+msgid "このせんしゅコードはすでにとうろくされています"
+msgstr ""
+
+#: ./templates/Registers/qrcode.php:121
+msgid "とうろくされたせんしゅQRコードではありません"
+msgstr ""
+
+#: ./templates/Registers/qrcode.php:124
+msgid "このせんしゅQRコードはすでにとうろくされています"
+msgstr ""
+
+#: ./templates/Registers/inputcode.php:94
+#: ./templates/Registers/qrcode.php:130
+msgid "サーバエラーです"
+msgstr ""
+
+#: ./templates/Registers/inputcode.php:95
+#: ./templates/Registers/qrcode.php:131
+msgid "かかりの人をよんでください"
+msgstr ""
+
+#: ./templates/Registers/qrcode.php:40
+msgid "よみこみました。かくにんちゅうです… "
+msgstr ""
+
+#: ./templates/Registers/qrcode.php:66
+#: ./templates/Registers/qrcode.php:108
+msgid "せんしゅカードのQRコードをうつしてください"
+msgstr ""
+
+#: ./templates/Registers/qrcode.php:87
+msgid "カメラが利用できません。"
+msgstr ""
+
+#: ./templates/Registers/qrcode.php:111
+msgid "QRコードがよみこめないときはこちら"
+msgstr ""
+
+#: ./templates/Registers/qrcode.php:127
+msgid "もういちどよみこみボタンを押してください"
+msgstr ""
+
+#: ./templates/Registers/register_name.php:54
+#: ./templates/Registers/register_name.php:93
+msgid "せんしゅめいを入力してください"
+msgstr ""
+
+#: ./templates/Registers/register_name.php:60
+#: ./templates/Registers/register_name.php:96
+msgid "せいべつを選んでください"
+msgstr ""
+
+#: ./templates/Registers/register_name.php:73
+msgid "ねんれいを選んでください"
+msgstr ""
+
+#: ./templates/Registers/register_name.php:77
+msgid "さい"
+msgstr ""
+
+#: ./templates/Registers/registered.php:3
+msgid "せんしゅとしてとうろくされました！\nあなたのせんしゅページは\n{0}\nです"
+msgstr ""
+
+#: ./templates/Registers/registered.php:6
+#: ./templates/Registers/registered_noname.php:6
+msgid "わかりました"
+msgstr ""
+
+#: ./templates/element/header.php:6
+msgid "最初の画面へ"
+msgstr ""
+
+#: ./templates/element/header.php:9
+msgid "せんしゅとうろくマシン"
+msgstr ""
+
+#: ./templates/layout/default.php:24
+msgid "スポーツタイムマシン"
+msgstr ""
+
+#: ./templates/layout/error.php:38
+msgid "戻る"
+msgstr ""
+

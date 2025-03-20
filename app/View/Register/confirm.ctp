@@ -12,31 +12,31 @@ $(function(){
 </script>
 <div class="clear">
     <form action="<?php echo $this->Html->webroot?>Register/oath" id="ConfirmForm" method="post" accept-charset="utf-8">
-        <div>これでよろしいですか？</div>
-        <div>せんしゅID:<?php echo $register['player_id']; ?></div>
+        <div><?= __("これでよろしいですか？")?></div>
+        <div><?= __("せんしゅID")?>:<?php echo $register['player_id']; ?></div>
         <div class="input_disp">
-            せんしゅ名
+            <?= __("せんしゅ名")?>
             <div class="detail">
                 <?php echo $register['name']; ?>
             </div>
         </div>
         <div class="input_disp">
-            せいべつ
+            <?= __("せいべつ")?>
             <div class="detail">
                 <?php echo $disp_gender; ?>
             </div>
         </div>
         <div class="input_disp" style="margin-bottom: 8px;">
-            ねんれい
+            <?= __("ねんれい")?>
             <div class="detail">
                 <?php echo $disp_age; ?>
             </div>
         </div>
-        <?php echo $this->Form->button('やりなおし',array('label' => false, 'class' => 'btn', 'id' => 'prev')); ?>        
-        <?php echo $this->Form->button('けってい',array('label' => false, 'class' => 'btn', 'id' => 'decide')); ?>
+        <?php echo $this->Form->button(__('やりなおし'),array('label' => false, 'class' => 'btn', 'id' => 'prev')); ?>        
+        <?php echo $this->Form->button(__('けってい'),array('label' => false, 'class' => 'btn', 'id' => 'decide')); ?>
        
     </form>
 </div>
 <div>
-    このせんしゅめいをぜったいに忘れないでくださいね
+    <?= __("このせんしゅめいをぜったいに忘れないでくださいね") ?>
 </div>
