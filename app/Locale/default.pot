@@ -19,7 +19,7 @@ msgid "スポーツタイムマシン選手宣誓"
 msgstr ""
 
 #: ./templates/Registers/auth.php:9
-msgid "わたし{0}は、"
+msgid "わたし%sは、"
 msgstr ""
 
 #: ./templates/Registers/auth.php:11
@@ -138,7 +138,7 @@ msgid "かかりの人をよんでください"
 msgstr ""
 
 #: ./templates/Registers/qrcode.php:40
-msgid "よみこみました。かくにんちゅうです… "
+msgid "よみこみました。かくにんちゅうです…"
 msgstr ""
 
 #: ./templates/Registers/qrcode.php:66
@@ -148,6 +148,9 @@ msgstr ""
 
 #: ./templates/Registers/qrcode.php:87
 msgid "カメラが利用できません。"
+msgstr ""
+
+msgid "カメラ切り替え"
 msgstr ""
 
 #: ./templates/Registers/qrcode.php:111
@@ -177,7 +180,7 @@ msgid "さい"
 msgstr ""
 
 #: ./templates/Registers/registered.php:3
-msgid "せんしゅとしてとうろくされました！\nあなたのせんしゅページは\n{0}\nです"
+msgid "せんしゅとしてとうろくされました！\nあなたのせんしゅページは\n%s\nです"
 msgstr ""
 
 #: ./templates/Registers/registered.php:6

@@ -15,7 +15,7 @@ $(function(){
     <div class="oath">
         <div class="text-center" style="padding:20px 16px;"><?=__("スポーツタイムマシン選手宣誓")?></div>
         <div class="text-left">
-            <p><?=__("わたし{0}は、", $register['name'])?></p>
+            <p><?=__("わたし%sは、", h($register['name']))?></p>
             <p>・<?=__("スポーツマンシップにのっとり正々堂々とプレイします。")?></p>
             <p>・<?= nl2br(__("タイムマシンマンシップにのっとり情報を<br/>未来の自分・家族・友達・小松・石川・地球・宇宙のために残します。")) ?></p>
         </div>

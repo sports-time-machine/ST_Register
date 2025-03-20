@@ -41,7 +41,7 @@ class RegisterController extends AppController {
         
         $ages = array();
         for ($i=0;$i<=100;$i++){
-            $ages+= array($i => $i."さい");
+            $ages+= array($i => $i);
         }
 
         $this->set('maxlength', NAME_MAX_LENGTH);
@@ -50,7 +50,6 @@ class RegisterController extends AppController {
     }
     //確認
     function confirm() {
-        
         //セッションが無かったらリダイレクト
         if ($this->Session->check('Register') == false){
             $this->redirect(array('action' => 'qrread'));
@@ -80,19 +79,7 @@ class RegisterController extends AppController {
            
        }
        
-       // 性別表示用
-       $disp_gender = "";
-       if ($this->Session->read('Register.gender') == "male") $disp_gender = "男性(おとこのこ)";
-       if ($this->Session->read('Register.gender') == "female") $disp_gender = "女性(おんなのこ)";
-       if ($this->Session->read('Register.gender') == "other") $disp_gender = "その他(そのた)";
-       
-       // 年齢表示用
-       $disp_age = $this->Session->read('Register.age');
-       $disp_age .= "歳";
-       
        $this->set('register',$this->Session->read('Register'));
-       $this->set('disp_gender',$disp_gender);
-       $this->set('disp_age',$disp_age);
        
     }
     
@@ -100,7 +87,7 @@ class RegisterController extends AppController {
     function oath() {
         //セッションが無かったらリダイレクト
         if ($this->Session->check('Register') == false){
-            $this->redirect(array('action' => 'qrread'));
+           $this->redirect(array('action' => 'qrread'));
         }
         
         $this->set('register',$this->Session->read('Register'));  
@@ -108,7 +95,6 @@ class RegisterController extends AppController {
     
     //選手追加
     function registered() {
-        
         if ($this->request->is('post')) {
             //セッションが無かったらリダイレクト
             if ($this->Session->check('Register') == false){

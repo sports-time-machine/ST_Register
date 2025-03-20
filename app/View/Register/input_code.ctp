@@ -1,5 +1,5 @@
 <script type="text/javascript">
-//読み込まれたQRコードが既に選手登録済み、もしくは、予め登録されていないQRコードかチェック
+// 読み込まれたQRコードが既に選手登録済み、もしくは、予め登録されていないQRコードかチェック
 function checkPlayerRegister_Ajax(code){
     var url = "<?php echo $this->Html->webroot . 'register/check_input'; ?>";
     var data = { code : code};
@@ -75,7 +75,7 @@ $(function(){
         <?php echo $this->Form->text('input_code',array('label' => false, 'class' => "input" , "maxlength" => 8, 'autocomplete' => 'off')); ?>
     </div>
     <div>
-        <?php echo $this->Form->button('よみこみ',array('type' => 'button', 'div' => false, 'id' => 'read', 'class' => 'btn')) ?>
+        <?php echo $this->Form->button(__('よみこみ'),array('type' => 'button', 'div' => false, 'id' => 'read', 'class' => 'btn')) ?>
     </div>
     <?php echo $this->Form->hidden('player_id'); ?>
 </div>
