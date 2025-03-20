@@ -19,8 +19,8 @@ msgid "スポーツタイムマシン選手宣誓"
 msgstr "스포츠 타임머신 선수 선서"
 
 #: ./templates/Registers/auth.php:9
-msgid "わたし{0}は、"
-msgstr "저 {0}는"
+msgid "わたし%sは、"
+msgstr "저 %s는"
 
 #: ./templates/Registers/auth.php:11
 msgid "スポーツマンシップにのっとり正々堂々とプレイします。"
@@ -138,7 +138,7 @@ msgid "かかりの人をよんでください"
 msgstr "담당자를 불러주세요."
 
 #: ./templates/Registers/qrcode.php:40
-msgid "よみこみました。かくにんちゅうです… "
+msgid "よみこみました。かくにんちゅうです…"
 msgstr "스캔 후 체크 중입니다…"
 
 #: ./templates/Registers/qrcode.php:66
@@ -149,6 +149,9 @@ msgstr "선수 카드의 QR코드를 스캔해 주세요."
 #: ./templates/Registers/qrcode.php:87
 msgid "カメラが利用できません。"
 msgstr "카메라를 사용할 수 없습니다."
+
+msgid "カメラ切り替え"
+msgstr "카메라 전환"
 
 #: ./templates/Registers/qrcode.php:111
 msgid "QRコードがよみこめないときはこちら"
@@ -177,8 +180,8 @@ msgid "さい"
 msgstr "세"
 
 #: ./templates/Registers/registered.php:3
-msgid "せんしゅとしてとうろくされました！\nあなたのせんしゅページは\n{0}\nです"
-msgstr "선수로 등록되었습니다!\n당신의 선수 페이지는\n{0}"
+msgid "せんしゅとしてとうろくされました！\nあなたのせんしゅページは\n%s\nです"
+msgstr "선수로 등록되었습니다!\n당신의 선수 페이지는\n%s"
 
 #: ./templates/Registers/registered.php:6
 #: ./templates/Registers/registered_noname.php:6

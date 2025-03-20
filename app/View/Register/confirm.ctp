@@ -23,13 +23,17 @@ $(function(){
         <div class="input_disp">
             <?= __("せいべつ")?>
             <div class="detail">
-                <?php echo $disp_gender; ?>
+                <?php 
+                    if ($register['gender'] == "male") echo __("男性(おとこのこ)");
+                    if ($register['gender'] == "female") echo __("女性(おんなのこ)");
+                    if ($register['gender'] == "other") echo __("その他(そのた)");
+                 ?>
             </div>
         </div>
         <div class="input_disp" style="margin-bottom: 8px;">
             <?= __("ねんれい")?>
             <div class="detail">
-                <?php echo $disp_age; ?>
+                <?php echo $register['age'].__("さい") ?>
             </div>
         </div>
         <?php echo $this->Form->button(__('やりなおし'),array('label' => false, 'class' => 'btn', 'id' => 'prev')); ?>        

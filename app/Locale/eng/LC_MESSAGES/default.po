@@ -19,8 +19,8 @@ msgid "スポーツタイムマシン選手宣誓"
 msgstr "Sports Time Machine Player Oath"
 
 #: ./templates/Registers/auth.php:9
-msgid "わたし{0}は、"
-msgstr "I, {0},"
+msgid "わたし%sは、"
+msgstr "I, %s,"
 
 #: ./templates/Registers/auth.php:11
 msgid "スポーツマンシップにのっとり正々堂々とプレイします。"
@@ -28,7 +28,7 @@ msgstr "promise to play fairly and with good sportsmanship."
 
 #: ./templates/Registers/auth.php:12
 msgid "タイムマシンマンシップにのっとり情報を<br/>未来の自分・家族・友達・小松・石川・地球・宇宙のために残します。"
-msgstr "With \"time machinemanship,\" I’ll save information to help everyone playing together.<br/>(The data we collect this time will be deleted after the event is over.)"
+msgstr "With &quot;time machinemanship,&quot; I’ll save information to help everyone playing together.<br/>(The data we collect this time will be deleted after the event is over.)"
 
 #: ./templates/Registers/auth.php:17
 msgid "せんせいしません"
@@ -101,22 +101,28 @@ msgstr "If this screen keeps appearing, please call a staff member."
 
 #: ./templates/Registers/error.php:6
 msgid "さいしょの画面へ"
-msgstr "To the initial screen"
+msgstr "To the top screen"
 
 #: ./templates/Registers/inputcode.php:68
 msgid "せんしゅカードに書いてあるコードを書いて\n「よみこみ」ボタンを押してください"
-msgstr "Please enter the code written on your player card and press the \"scan\" button."
+msgstr "Please enter the code written on your player card and press the &quot;scan&quot; button."
 
 #: ./templates/Registers/inputcode.php:75
 msgid "よみこみ"
 msgstr "Scan"
 
 #: ./templates/Registers/inputcode.php:88
+msgid "とうろくされたせんしゅコードではありません"
+msgstr "This is not a registered player code."
+
+#: ./templates/Registers/inputcode.php:91
+msgid "このせんしゅコードはすでにとうろくされています"
+msgstr "This player code is already registered."
+
 #: ./templates/Registers/qrcode.php:121
 msgid "とうろくされたせんしゅQRコードではありません"
 msgstr "This is not a registered player QR code."
 
-#: ./templates/Registers/inputcode.php:91
 #: ./templates/Registers/qrcode.php:124
 msgid "このせんしゅQRコードはすでにとうろくされています"
 msgstr "This player QR code is already registered."
@@ -132,7 +138,7 @@ msgid "かかりの人をよんでください"
 msgstr "Please call a staff member."
 
 #: ./templates/Registers/qrcode.php:40
-msgid "よみこみました。かくにんちゅうです… "
+msgid "よみこみました。かくにんちゅうです…"
 msgstr "Scanned successfully. Verifying…"
 
 #: ./templates/Registers/qrcode.php:66
@@ -143,6 +149,9 @@ msgstr "Please scan the QR code on your player card."
 #: ./templates/Registers/qrcode.php:87
 msgid "カメラが利用できません。"
 msgstr "The camera is not available."
+
+msgid "カメラ切り替え"
+msgstr "Switch camera"
 
 #: ./templates/Registers/qrcode.php:111
 msgid "QRコードがよみこめないときはこちら"
@@ -171,8 +180,8 @@ msgid "さい"
 msgstr "Years old"
 
 #: ./templates/Registers/registered.php:3
-msgid "せんしゅとしてとうろくされました！\nあなたのせんしゅページは\n{0}\nです"
-msgstr "You have been registered as a player!\nYour player page is \n{0} ."
+msgid "せんしゅとしてとうろくされました！\nあなたのせんしゅページは\n%s\nです"
+msgstr "You have been registered as a player!\nYour player page is \n%s"
 
 #: ./templates/Registers/registered.php:6
 #: ./templates/Registers/registered_noname.php:6
@@ -181,7 +190,7 @@ msgstr "Got it"
 
 #: ./templates/element/header.php:6
 msgid "最初の画面へ"
-msgstr "To the initial screen"
+msgstr "To the top screen"
 
 #: ./templates/element/header.php:9
 msgid "せんしゅとうろくマシン"

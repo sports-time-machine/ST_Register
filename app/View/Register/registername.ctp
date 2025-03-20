@@ -72,7 +72,13 @@ $(function(){
         <div style="margin-top: 16px;"></div>
                 <div><?=__("ねんれいを選んでください")?></div>
                 <div>
-                    <?php echo $this->Form->select('age', $ages, array('label'=>false, 'class' => 'btn', 'default' => $register['age'], 'empty' => false)); ?>  
+                    <?php 
+                        $selectAges = [];
+                        foreach ($ages as $age) {
+                            $selectAges []= $age.__("さい");
+                        }
+                    ?>
+                    <?php echo $this->Form->select('age', $selectAges, array('label'=>false, 'class' => 'btn', 'default' => $register['age'], 'empty' => false)); ?>  
                 </div>
                 <br />
                 <?php echo $this->Form->hidden('player_id'); ?>
