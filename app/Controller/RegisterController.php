@@ -36,11 +36,11 @@ class RegisterController extends AppController {
                         
         //セッションが無かったらリダイレクト
         if ($this->Session->check('Register') == false){
-            $this->redirect(array('action' => 'qrread'));
+           $this->redirect(array('action' => 'qrread'));
         }
         
         $ages = array();
-        for ($i=0;$i<=100;$i++){
+        for ($i=0;$i<=150;$i++){
             $ages+= array($i => $i);
         }
 

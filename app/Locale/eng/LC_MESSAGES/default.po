@@ -55,7 +55,7 @@ msgstr "Female"
 
 #: ./templates/Registers/confirm.php:12
 msgid "歳(さい)"
-msgstr "Years old"
+msgstr "years(year)-old"
 
 #: ./templates/Registers/confirm.php:17
 msgid "これでよろしいですか？"
@@ -177,7 +177,7 @@ msgstr "Please select your age."
 
 #: ./templates/Registers/register_name.php:77
 msgid "さい"
-msgstr "Years old"
+msgstr "years(year)-old"
 
 #: ./templates/Registers/registered.php:3
 msgid "せんしゅとしてとうろくされました！\nあなたのせんしゅページは\n%s\nです"
