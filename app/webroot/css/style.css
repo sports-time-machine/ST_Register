@@ -15,14 +15,11 @@ div.info {
 }
 
 #header {
+    padding: 0px 0px 6px 0px;
     font-size: 50px;
-    margin: 20px 0px 25px 0px;
+    margin: 0px 10px 25px 10px;
     height: 135px;
     line-height: 52px;
-}
-
-#header div{
-    padding: 6px;
 }
 
 #content{
@@ -183,12 +180,14 @@ div.input_disp div.detail {
     line-height: 50px;
 }*/
 
+a.lang_link {
+    font-size: 20px;
+    line-height: 24px;
+}
+
 #home{
     font-size: 20px;
     line-height: 24px;
-    position: absolute;
-    top: 16px;
-    left: 24px;
 }
 
 div.oath{

@@ -7,11 +7,11 @@ $(function(){
 });
 </script>
 <div class="clear">
-    <div>せんしゅとしてとうろくされました！</div>
-    <div>「せんしゅめい」がなかったので</div>
-    <div>せんしゅページにはアクセスできません</div>
+    <div><?= __("せんしゅとしてとうろくされました！") ?></div>
+    <div><?= __("「せんしゅめい」がなかったので") ?></div>
+    <div><?= __("せんしゅページにはアクセスできません") ?></div>
     <div>
-        <?php echo $this->Form->button('わかりました',array('label' => false, 'class' => 'btn', 'id' => 'first')); ?>    
+        <?php echo $this->Form->button(__('わかりました'),array('label' => false, 'class' => 'btn', 'id' => 'first')); ?>    
     </div>
 </div>
 

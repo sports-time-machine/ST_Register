@@ -8,11 +8,20 @@ $(function(){
 });
 </script>
 <div id="header">
-    <?php if ($this->action != 'qrread' && $this->action != 'registered') : ?>
-    <a href="#" id="home">最初の画面へ</a>
-    <?php endif; ?>
+    <div style="display:flex; justify-content: space-between">
+        <div>
+            <a class="lang_link" href="?lang=kor">한국어</a>
+            <a class="lang_link" href="?lang=eng">English</a>
+            <a class="lang_link" href="?lang=jpn">日本語</a>
+        </div>
+        <div>
+            <?php if ($this->action != 'qrread' && $this->action != 'registered') : ?>
+                <a href="#" id="home"><?=__("最初の画面へ")?></a>
+            <?php endif; ?>
+        </div>
+    </div>
     <div>
-        せんしゅとうろくマシン
+        <?=__("せんしゅとうろくマシン")?>
     </div>
     <div>
         <?php echo $this->Html->image('line.gif', array('alt' => 'Line')); ?>

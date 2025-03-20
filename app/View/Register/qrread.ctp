@@ -19,7 +19,7 @@ function checkPlayerRegister_Ajax(code){
     var url = "<?php echo $this->Html->webroot . 'register/check'; ?>";
     var data = { code : code};
     sending = true;
-    $('#info').text('よみこみました。かくにんちゅうです…');
+    $('#info').text("<?= __("よみこみました。かくにんちゅうです…") ?>");
 	$.ajax({
 		type: "POST",
 		url: url + '?time=' + (new Date).getTime(),
@@ -29,16 +29,16 @@ function checkPlayerRegister_Ajax(code){
             $('#player_id').val(code.substr(1));
             $('form').submit();
         }else if (data === "NoData") {
-            showModal("<div>とうろくされたせんしゅ</div><div>QRコードではありません</div>");
+            showModal("<div><?= __("とうろくされたせんしゅQRコードではありません")?></div>");
         }else if (data === "Registered") {
-            showModal("<div>このせんしゅQRコードは</div><div>すでにとうろくされています</div>");
+            showModal("<div><?= __("このせんしゅQRコードはすでにとうろくされています")?></div>");
         }else {
-            showModal("<div>もういちどよみこみボタンを押してください</div>");
+            showModal("<div><?= __("もういちどよみこみボタンを押してください")?></div>");
         }
     }).fail(() => {
-        showModal("<div>サーバエラーです。</div><div>かかりの人をよんでください</div>");
+        showModal("<div><?= __("サーバエラーです")?><br><?= __("かかりの人をよんでください")?></div>");
     }).always(() => {
-        $('#info').text('せんしゅカードのQRコードをうつしてください');
+        $('#info').text('<?= __("せんしゅカードのQRコードをうつしてください")?>');
     }) ;
 }
 
@@ -67,7 +67,7 @@ function syncCamera(video) {
             }
         })
         .catch(function(err){
-            alert("カメラが利用できません。");
+            alert("<?= __("カメラが利用できません。")?>");
         });
 }
 
@@ -78,7 +78,7 @@ $(function(){
 
     //カメラ使えるかチェック
     if (!navigator.mediaDevices) {
-        alert("カメラが利用できません。");
+        alert("<?= __("カメラが利用できません。")?>");
     }
 
     var readQrCode = () => {
@@ -118,11 +118,11 @@ $(function(){
     </div>
     <div>
         <div id="info" class="info">
-            せんしゅカードのQRコードをうつしてください
+            <?= __("せんしゅカードのQRコードをうつしてください") ?>
         </div>
     </div>
     <div class="inputLogin">
-        <div><a href="<?php echo $this->Html->webroot?>Register/input_code">QRコードがよみこめないときはこちら</a></div>
+        <div><a href="<?php echo $this->Html->webroot?>Register/input_code"><?= __("QRコードがよみこめないときはこちら") ?></a></div>
     </div>
 </div>
 <?php echo $this->Form->hidden('player_id'); ?>

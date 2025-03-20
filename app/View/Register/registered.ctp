@@ -8,13 +8,10 @@ $(function(){
 </script>
 <div class="clear">
     <div class="info">
-        せんしゅとしてとうろくされました！<br />
-        あなたのせんしゅページは<br />
-        http://www.sptmy.net/p/<?php echo $player_id ?><br />
-        です
+        <?= nl2br(__("せんしゅとしてとうろくされました！\nあなたのせんしゅページは\n{0}\nです", "http://www.sptmy.net/p/".$player_id)) ?><br />
     </div>
     <div>
-        <?php echo $this->Form->button('わかりました',array('label' => false, 'class' => 'btn', 'id' => 'first')); ?>    
+        <?php echo $this->Form->button(__('わかりました'),array('label' => false, 'class' => 'btn', 'id' => 'first')); ?>    
     </div>
 </div>
 
