@@ -36,7 +36,7 @@
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
-	<link rel="manifest" href="<?php echo $this->webroot.'img/manifest.json' ?>">
+	<link rel="manifest" href="<?php echo $this->webroot.'manifest.json' ?>">
 </head>
 <body>
     <div style="width:100%;">
