@@ -31,11 +31,12 @@
 		echo $this->Html->script( 'jquery-1.9.1.min', array( 'inline' => false ) );
    		echo $this->Html->script('bootstrap.min', array('inline' => false));
 		echo $this->Html->css('bootstrap.min');
-        echo $this->Html->css('style');
+		echo $this->Html->css('style');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	<link rel="manifest" href="<?php echo $this->webroot.'img/manifest.json' ?>">
 </head>
 <body>
     <div style="width:100%;">
