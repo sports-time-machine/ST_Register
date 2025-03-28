@@ -1,0 +1,22 @@
+{
+	"name": "Sports Time Machine Register",
+	"short_name": "STM Register",
+	"description": "スポーツタイムマシン選手登録アプリ",
+	"start_url": "/ST_Register/register/qrread",
+	"display": "fullscreen",
+	"background_color": "#ffffff",
+	"theme_color": "#f47321",
+	"orientation": "landscape",
+	"icons": [
+		{
+		"src": "/img/stm192x192.png",
+		"sizes": "192x192",
+		"type": "image/png"
+		},
+		{
+		"src": "/img/stm512x512.png",
+		"sizes": "512x512",
+		"type": "image/png"
+		}
+	]
+}

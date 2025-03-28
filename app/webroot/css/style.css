@@ -121,10 +121,6 @@ div.cameraLogin div.camera{
     width: 400px;
     height: 300px;
     margin: 0 auto;
-    border: 5px solid #ffffff;
-	border-radius: 10px;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
 }
 
 div.cameraLogin div.info{
